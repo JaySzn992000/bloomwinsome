@@ -72,6 +72,7 @@ import Haircolor from "./Products/hair-color";
 
 function App () {
 
+const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 return (
 
@@ -92,6 +93,7 @@ return (
 <Route path="/Ecart" element={<Ecart />} />
 <Route path="/Registeration" element={<Registeration />} />
 <Route path="/Header" element={<Header />} />
+<Route path="/Adminlogin" element={<Adminlogin setIsLoggedIn={setIsLoggedIn} />} />
 <Route path="/DashboardcomXKPbcadafcddcfadacbPKXproductlistsearchdashboard" element={<DashboardcomXKPbcadafcddcfadacbPKXproductlistsearchdashboard />} />
 <Route path="/OwnerDashboard" element={<OwnerDashboard />} />
 <Route path="/ItemHistory" element={<ItemHistory />} />
