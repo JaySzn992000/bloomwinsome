@@ -391,7 +391,8 @@ console.error("Error fetching data:", err.message);
 res.status(500).json({ error: "Database query failed" });
 }
 
-});
+})
+
 
 
 // app.get("/fetchProductslistJeans", (req, res) => {

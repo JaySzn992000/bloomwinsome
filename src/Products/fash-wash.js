@@ -18,7 +18,6 @@ const [filteredProducts, setFilteredProducts] = useState([]);
 const location = useLocation();
 const query = new URLSearchParams(location.search).get("search"); 
 
-
 useEffect(() => {
 axios
 .get("https://omega-zg6z.onrender.com/fetchProductslistFacewash")
