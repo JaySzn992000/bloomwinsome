@@ -285,6 +285,9 @@ z-index: 999;
 display: none;
 width: 37px;
 cursor: pointer;
+position: absolute;
+left: 2.3em;
+top: 1.3em;
 }
 
 .navProduct_Slider {
@@ -601,7 +604,6 @@ line-height: 2.9em;
 
 .Product_navbar {
 display: flex;
-height: 67px;
 justify-content: space-between;
 padding-left: 0;
 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.052);
@@ -671,7 +673,7 @@ width: 25px;
 
 
 @media (min-width: 769px) and (max-width: 1024px) {
-
+    
 .fa-bars{
 filter: invert(1);
 display: block;
@@ -738,6 +740,18 @@ gap: .2em;
 
 .afterSearch_prodct {
 width: 227px;
+}
+
+.flex_div_prfle .flex_icon_  {
+display: flex;
+align-items: center;
+margin-left: .5em;
+width:100%;
+border-bottom : 1px solid #e5e5e5;
+}
+
+.flex_div_prfle {
+line-height: 2.9em;
 }
 
 }

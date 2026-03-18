@@ -57,3 +57,11 @@ object-fit: cover;
 
 }
 
+
+@media (min-width : 769px) and (max-width : 1024px) {
+
+.slider_div {
+margin-top: -77px;
+}
+
+}

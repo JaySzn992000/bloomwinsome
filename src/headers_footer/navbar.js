@@ -263,6 +263,8 @@ return (
 
 <div className="fa_barsLogo_Container">
 
+<div>
+
 <img 
 onClick={clickOpen}
 src={Bars}
@@ -270,6 +272,8 @@ className="fa fa-bars fa_bars_nav"
 loading="lazy"
 alt=""
 ></img>
+
+</div>
 
 <img onClick={navigateHome}
 className="logo_img" src={LogoNitiArya}
