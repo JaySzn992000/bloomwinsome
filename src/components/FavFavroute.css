@@ -150,15 +150,15 @@ margin-bottom: 1.3em;
 @media (min-width: 769px) and (max-width: 1500px) {
 
 .FavFavroute_flex_hm {
-gap: 4.3vw;
+gap: 3.3vw;
 }
 
 .FavFavroute_flex_hm img {
-width: 45vw;
+width: 35vw;
 }
 
 .FavFavroute_flex_hm section {
-width: 45vw;
+width: 35vw;
 }
 
 .FavFavroute_flex_hm h3 {

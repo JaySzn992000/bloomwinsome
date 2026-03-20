@@ -23,7 +23,7 @@ const [products, setProducts] = useState([]);
 useEffect(() => {
 
 axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist")
+.get("http://localhost:3001/fetchProductslist")
 .then((res) => setProducts(res.data))
 .catch((err) => console.error(err));
 }, []);
@@ -53,7 +53,7 @@ JSON.parse(localStorage.getItem("wishlistStatus")) || {};
 setWishlistStatus(storedWishlistStatus);
 
 axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist")
+.get("http://localhost:3001/fetchProductslist")
 .then((response) => {
 setArrayStore(response.data);
 setFilteredProducts(response.data);
@@ -70,7 +70,7 @@ const query = new URLSearchParams(location.search).get("search");
 useEffect(() => {
 if (query) {
 axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist", {
+.get("http://localhost:3001/fetchProductslist", {
 params: { search: query },
 })
 .then((response) => {
@@ -82,7 +82,7 @@ console.error("Error fetching products:", error);
 });
 } else {
 axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist")
+.get("http://localhost:3001/fetchProductslist")
 .then((response) => {
 setAllProducts(response.data);
 setFilteredProducts(response.data);
@@ -198,7 +198,6 @@ id="Review_Img"
 src="https://cdn-icons-png.flaticon.com/128/15853/15853959.png"
 />
 
-<li style={{ marginTop: ".5em", marginLeft: "-.2em" }}></li>
 <li className="fa_Review">{productlist.review}</li>
 
 </div>
