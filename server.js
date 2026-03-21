@@ -1718,7 +1718,7 @@ console.log(`Server is running PORT on ${PORT}`);
 
 setInterval(() => {
   axios
-    .get("https://naturalbuti.onrender.com/ping")
+    .get("https://omega-zg6z.onrender.com/ping")
     .then(() => {
       console.log("Pinged self to stay awake");
     })
