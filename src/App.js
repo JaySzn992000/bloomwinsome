@@ -42,7 +42,7 @@ import CategoryJackfruit from "./Products/CategoryJackfruit";
 import Biotique from "./Products/biotique";
 import Lorealparis from "./Products/lorealparis";
 import CategoryLemon from "./Products/aroma";
-import HairGrowth from "./Products/fash-wash";
+import HairGrowth from "./Products/face-wash";
 import SandalwoodPowder from "./Products/SandalwoodPowder";
 import CategoryGhee from "./Products/CategoryGhee";
 import Pickles from "./Products/Pickle";
@@ -62,8 +62,8 @@ import BathBody from "./components/bath-body";
 import Haircare from "./components/haircare";
 import Makeup from "./components/makeup";
 import Perfume from "./components/perfume";
-import Fashwash from "./Products/fash-wash";
-import Fashcream from "./Products/fash-cream";
+import Facewash from "./Products/face-wash";
+import Facecream from "./Products/face-cream";
 import Sunscreen from "./Products/sunscreen";
 import Shampoo from "./Products/shampoo";
 import HairSerum from "./Products/hair-serum";
@@ -120,8 +120,8 @@ return (
 <Route path="/CategoryJackfruit" element={<CategoryJackfruit />} />
 <Route path="/CategoryLemon" element={<CategoryLemon />} />
 <Route path="/lorealparis" element={<Lorealparis />} />
-<Route path="/fash-cream" element={<Fashcream />} />
-<Route path="/fash-wash" element={<Fashwash />} />
+<Route path="/face-cream" element={<Facecream />} />
+<Route path="/face-wash" element={<Facewash />} />
 <Route path="/sunscreen" element={<Sunscreen />} />
 <Route path="/shampoo" element={<Shampoo />} />
 <Route path="/hair-serum" element={<HairSerum />} />

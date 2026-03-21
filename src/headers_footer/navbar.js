@@ -67,22 +67,19 @@ localStorage.removeItem("loggedInUser");
 navigate("/collections");
 };
 
-const navi = useNavigate();
 
 const naviProductPage = () => {
-navi("/collections");
+navigate("/collections");
 };
 
 
-const naviStoreBrand = useNavigate();
-
 const naviToStoreBrand = () => {
-naviStoreBrand("/collections");
+navigate("/collections");
 };
 
 
 const naviProductFashWash = () => {
-naviStoreBrand("/fash-wash")
+navigate("/face-wash")
 }
 
 
@@ -98,85 +95,85 @@ profileNavi("/Profile");
 
 };
 
-const naviorderhistory = useNavigate();
 
-const naviHome = useNavigate();
 const navigateHome = () => {
-naviHome("/");
+navigate("/");
 };
 
 const orderhistory = () => {
-naviorderhistory("/ItemHistory");
+navigate("/ItemHistory");
 };
 
-const naviheartNavi = useNavigate();
 const heartNavi = () => {
-naviheartNavi("/WishList");
+navigate("/WishList");
 };
 
-const naviTshirt = useNavigate();
-const naviGateTshirt = () => {
-naviTshirt("/lotus");
+const naviGatefacecream = () => {
+navigate("/face-cream");
 };
 
-const naviShirt = useNavigate();
 const naviGateShirt = () => {
-naviShirt("/o3plus");
+navigate("/sunscreen");
 };
 
-const naviJeans = useNavigate();
-const naviGateJeans = () => {
-naviJeans("/lorealparis");
+const naviGateShampoo = () => {
+navigate("/shampoo")
+}
+
+const naviGateSerum = () => {
+navigate("/hair-serum")
+}
+
+const naviGatehairColor = () => {
+navigate("/hair-color")
+}
+
+const naviGateSunscreen = () => {
+navigate("/o3plus")
+}
+
+const naviGatelotus = () => {
+navigate("/lotus")
+}
+
+const naviGatelorealparis = () => {
+navigate("/lorealparis");
 };
 
-const naviPants = useNavigate();
 const naviGatePants = () => {
-naviPants("/biotique");
+navigate("/biotique");
 };
 
-const naviSweaters = useNavigate();
-const naviGateSweaters = () => {
-naviSweaters("/aroma");
+const naviGatearoma = () => {
+navigate("/aroma");
 };
 
-const naviSugar = useNavigate();
-const naviGateSugar = () => {
-naviSugar("/streax");
-};
-
-const NavigatetoBathBody = useNavigate()
+const navigateStreax = () => {
+navigate("/streax")
+}
 
 const naviToBathBody = () => {
-NavigatetoBathBody('/bath-body')
+navigate('/bath-body')
 }
-
-const NavigatetoHairCare = useNavigate()
 
 const naviToHairCare = () => {
-NavigatetoHairCare('/haircare')
+navigate('/haircare')
 }
-
-const NavigatetoSkinCare = useNavigate()
 
 const naviToSkinCare = () => {
-NavigatetoSkinCare('/skincare')
+navigate('/skincare')
 }
-
-const NavigatetoMakup = useNavigate()
 
 const naviToMakeup = () => {
-NavigatetoMakup('/makeup')
+navigate('/makeup')
 }
-
-const NavigatetoPerfume = useNavigate()
 
 const naviToPerfume = () => {
-NavigatetoPerfume('/perfume')
+navigate('/perfume')
 }
 
-const navitoLoginPage = useNavigate()
 const naviToLogin = () => {
-navitoLoginPage('/Registeration')
+navigate('/Registeration')
 }
 
 const clickOpen = () => {
@@ -249,9 +246,8 @@ window.addEventListener("wishlistUpdated", updateWishlistCount);
 const cart = useSelector((state) => state.cart);
 const cartCount = cart.length;
 
-const naviGateProductsAll = useNavigate()
 const seeAllProducts = () => {
-naviGateProductsAll('/collections')
+navigate('/collections')
 }
 
 
@@ -461,23 +457,23 @@ SKINCARE
 <div className="listing_Products">
 <ul>
 
-<li onClick={naviGateTshirt}>
+<li onClick={naviGatelotus}>
 <a href="">Lotus Herbals</a>
 </li>
 
-<li onClick={naviGateShirt}>
+<li onClick={naviGateSunscreen}>
 <a href="">O3 Plus</a>
 </li>
-<li onClick={naviGateJeans}>
+<li onClick={naviGatelorealparis}>
 <a href="">Loreal Paris</a>
 </li>
 <li onClick={naviGatePants}>
 <a href="">Biotique</a>
 </li>
-<li onClick={naviGateSweaters}>
+<li onClick={naviGatearoma}>
 <a href="">Aroma</a>
 </li>
-<li onClick={naviGateSugar}>
+<li onClick={navigateStreax}>
 <a href="">Streax</a>
 </li>
 </ul>
@@ -515,21 +511,21 @@ SKINCARE
 
 <ul>
 <li onClick={naviProductFashWash}>
-<a href="">Fash Wash</a>
+<a href="">Face Wash</a>
 </li>
-<li onClick={naviGateTshirt}>
-<a href="">Fash Cream</a>
+<li onClick={naviGatefacecream}>
+<a href="">Face Cream</a>
 </li>
 <li onClick={naviGateShirt}>
 <a href="">Sunscreen</a>
 </li>
-<li onClick={naviGateJeans}>
+<li onClick={naviGateShampoo}>
 <a href="">Shampoo</a>
 </li>
-<li onClick={naviGatePants}>
+<li onClick={naviGateSerum}>
 <a href="">Hair Serum</a>
 </li>
-<li onClick={naviGateSweaters}>
+<li onClick={naviGatehairColor}>
 <a href="">Hair Color</a>
 </li>
 </ul>
