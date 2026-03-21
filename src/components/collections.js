@@ -23,7 +23,7 @@ const [products, setProducts] = useState([]);
 useEffect(() => {
 
 axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist")
+.get("/fetchProductslist")
 .then((res) => setProducts(res.data))
 .catch((err) => console.error(err));
 }, []);
@@ -53,7 +53,7 @@ JSON.parse(localStorage.getItem("wishlistStatus")) || {};
 setWishlistStatus(storedWishlistStatus);
 
 axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist")
+.get("http://localhost:3001/fetchProductslist")
 .then((response) => {
 setArrayStore(response.data);
 setFilteredProducts(response.data);

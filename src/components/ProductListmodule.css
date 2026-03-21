@@ -21,16 +21,15 @@ top: 121px;
 
 .flex_productlist {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(277px, 1fr));
-max-width: 75%;
-margin-left: 23.7vw;
-gap: 0.3em;
+grid-template-columns: repeat(auto-fit, minmax(263px, 1fr));
+max-width: 73%;
+margin-left: 23.5vw;
 }
 
 .flex_productlist .produclist_divContainer {
 position: relative;
 height: auto;
-max-width: 277px;
+max-width: 263px;
 margin-bottom: 2.1em;
 }
 
