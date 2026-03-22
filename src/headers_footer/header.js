@@ -79,7 +79,6 @@ return (
 
 </div>
 
-
 <div className="div_header">
 
 <div className="header_dv">
@@ -115,7 +114,7 @@ exclusive offers.</p>
 <ul>
 <h4>CONNECT WITH US</h4>
 <li><a>Email: WINSOMEBLOOM.SHOP</a></li>
-<li><a>Phone: +91 9111574281</a></li>
+<li><a>Phone: +91 91115 74281</a></li>
 </ul>
 
 </div>

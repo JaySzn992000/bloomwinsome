@@ -22,7 +22,7 @@ axios
 .get("https://omega-zg6z.onrender.com/fetchProductslist")
 .then((response) => {
 setAllProducts(response.data);
-setFilteredProducts(limit ? response.data.slice(0, limit) : response.data);
+setFilteredProducts(response.data);
 })
 .catch((error) => {
 console.error("Error fetching products:", error);
@@ -37,7 +37,7 @@ params: { search: query },
 })
 .then((response) => {
 setAllProducts(response.data);
-setFilteredProducts(limit ? response.data.slice(0, limit) : response.data);
+setFilteredProducts(response.data);
 })
 .catch((error) => {
 console.error("Error with search query:", error);
@@ -51,7 +51,7 @@ const handleFilterUpdate = (filteredData) => {
 setFilteredProducts(filteredData);
 };
 
-const limitedProducts = filteredProducts.slice(0, limit);
+const limitedProducts = filteredProducts.slice(0, 6);
 
 const [wishlistStatus, setWishlistStatus] = useState({});
 const [wishlistCount, setWishlistCount] = useState(0);
@@ -59,8 +59,8 @@ const [cartCount, setCartCount] = useState(0);
 const [cartItems, setCartItems] = useState([]);
 
 useEffect(() => {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  setCartCount(cart.length);
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+setCartCount(cart.length);
 }, []);
 
 const sendToWishlist = (product) => {
@@ -87,24 +87,25 @@ setWishlistCount(wishlist.length);
 
 
 const handleAddToCart = (product) => {
-  if (!product) return;
+if (!product) return;
 
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const isProductInCart = cart.some(
-    (item) => String(item.id) === String(product.id)
-  );
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const isProductInCart = cart.some(
+(item) => String(item.id) === String(product.id)
+);
 
-  if (isProductInCart) {
-    alert("This product is already in your cart.");
-  } else {
-    addToCart(product); // 🔥 REDUX UPDATE (MAIN CHEEZ)
+if (isProductInCart) {
+alert("This product is already in your cart.");
+} else {
+addToCart(product); // 🔥 REDUX UPDATE (MAIN CHEEZ)
 
-    const updatedCart = [...cart, product];
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+const updatedCart = [...cart, product];
+localStorage.setItem("cart", JSON.stringify(updatedCart));
 
-    setCartCount(updatedCart.length); // 🔥 UI UPDATE
-    alert("Product added to cart!");
-  }
+setCartCount(updatedCart.length); // 🔥 UI UPDATE
+alert("Product added to cart!");
+}
+
 };
 
 return (
@@ -200,4 +201,4 @@ onClick={() => handleAddToCart(product)}
 );
 };
 
-export default connect(null, { addToCart })(Pickle);
+export default connect(null, { addToCart })(Pickle); 

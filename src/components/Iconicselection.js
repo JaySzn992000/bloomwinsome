@@ -20,7 +20,7 @@ return (
 
 <div>
 <img src="https://www.lotus.in/cdn/shop/files/LOTUS00000041_7_fb2da59d-8e63-457c-8a30-8d9e11958373.jpg?v=1733814814&width=700"></img> 
-<label>Fash Wash</label>
+<label>Face Wash</label>
 </div>
 
 <div>

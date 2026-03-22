@@ -157,7 +157,7 @@ navigate('/bath-body')
 }
 
 const naviToHairCare = () => {
-navigate('/haircare')
+navigate('/hair-care')
 }
 
 const naviToSkinCare = () => {
@@ -482,7 +482,6 @@ SKINCARE
 <li onClick={naviProductPage}>
 <img src={facilnav}></img>
 <br></br>
-<a href="">Moisturizer</a>
 </li>
 </ul>
 
@@ -490,7 +489,6 @@ SKINCARE
 <li onClick={naviProductPage}>
 <img src={lipstick}></img>
 <br></br>
-<a href="">Face Serum</a>
 </li>
 </ul>
 
@@ -536,7 +534,6 @@ SKINCARE
 <li onClick={naviProductPage}>
 <img src={compact}></img>
 <br></br>
-<a href="">Facial Kit</a>
 </li>
 </ul>
 
@@ -544,7 +541,6 @@ SKINCARE
 <li onClick={naviProductPage}>
 <img src={eyeliner}></img>
 <br></br>
-<a href="">Eyeliner</a>
 </li>
 </ul>
 

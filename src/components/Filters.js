@@ -137,8 +137,8 @@ style={{ width: "90%" }} />
 
 <div>
 {[
-"Fash Wash",
-"Fash Cream",
+"Face Wash",
+"Face Cream",
 "Sunscreen",
 "Shampoo",
 "Hair Serum",
