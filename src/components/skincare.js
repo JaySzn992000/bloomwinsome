@@ -23,7 +23,7 @@ const [products, setProducts] = useState([]);
 useEffect(() => {
 
 axios
-.get("http://localhost:3001/fetchProductslist")
+.get("https://omega-zg6z.onrender.com/fetchskincare")
 .then((res) => setProducts(res.data))
 .catch((err) => console.error(err));
 }, []);
@@ -52,7 +52,7 @@ JSON.parse(localStorage.getItem("wishlistStatus")) || {};
 setWishlistStatus(storedWishlistStatus);
 
 axios
-.get("http://localhost:3001/fetchProductslist")
+.get("https://omega-zg6z.onrender.com/fetchskincare")
 .then((response) => {
 setArrayStore(response.data);
 setFilteredProducts(response.data);
@@ -69,7 +69,7 @@ const query = new URLSearchParams(location.search).get("search");
 useEffect(() => {
 if (query) {
 axios
-.get("http://localhost:3001/fetchProductslist", {
+.get("https://omega-zg6z.onrender.com/fetchskincare", {
 params: { search: query },
 })
 .then((response) => {
@@ -81,7 +81,7 @@ console.error("Error fetching products:", error);
 });
 } else {
 axios
-.get("http://localhost:3001/fetchProductslist")
+.get("https://omega-zg6z.onrender.com/fetchskincare")
 .then((response) => {
 setAllProducts(response.data);
 setFilteredProducts(response.data);

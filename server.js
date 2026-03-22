@@ -320,23 +320,6 @@ app.use(express.static(path.join(__dirname, "public")));
 // });
 
 
-app.get("/fetchProductslistTshirt", async (req, res) => {
-const exactMatchQuery = `
-SELECT *
-FROM _imgproduct
-WHERE LOWER(img) = LOWER($1)
-`;
-
-try {
-const result = await pool.query(exactMatchQuery, ['AloeVeraGel']);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-});
-
-
 
 // app.get("/fetchProductslistChilli", (req, res) => {
 // const exactMatchQuery = `
@@ -356,7 +339,215 @@ res.status(500).json({ error: "Database query failed" });
 // });
 
 
-app.get("/fetchProductslistLotus", async (req, res) => {
+app.get("/fetchbathbody", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%bath body%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+
+app.get("/fetchstreax", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%streax%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+
+app.get("/fetchbiotique", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%biotique%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+
+app.get("/fetchskincare", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%skincare%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+app.get("/fetchhaircolor", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%hair color%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+
+app.get("/fetcharoma", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%aroma%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+
+app.get("/fetchshampoo", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%shampoo%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+
+app.get("/fetchskincare", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%skin care%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+
+app.get("/fetchmakeup", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%makeup%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+
+app.get("/fetchperfume", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%perfume%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+
+app.get("/fetchhaircare", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%hair care%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+
+app.get("/fetchLotus", async (req, res) => {
 
 const query = `
 SELECT *
@@ -375,12 +566,12 @@ res.status(500).json({ error: "Database query failed" });
 });
 
 
-app.get("/fetchProductslisto3plus", async (req, res) => {
+app.get("/fetchhairserum", async (req, res) => {
 
 const query = `
 SELECT *
 FROM _imgproduct
-WHERE img ILIKE '%o3plus%'
+WHERE img ILIKE '%hair serum%'
 `;
 
 try {
@@ -394,7 +585,81 @@ res.status(500).json({ error: "Database query failed" });
 });
 
 
-app.get("/fetchProductslistFacewash", async (req, res) => {
+app.get("/fetchlorealparis", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%loreal paris%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+app.get("/fetchsunscreen", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%sunscreen%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+app.get("/fetchfacecream", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%face cream%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+
+app.get("/fetcho3plus", async (req, res) => {
+
+const query = `
+SELECT *
+FROM _imgproduct
+WHERE img ILIKE '%o3 plus%'
+`;
+
+try {
+const result = await pool.query(query);
+res.json(result.rows);
+} catch (err) {
+console.error("Error fetching data:", err.message);
+res.status(500).json({ error: "Database query failed" });
+}
+
+});
+
+
+app.get("/fetchFacewash", async (req, res) => {
 
 const query = `
 SELECT *
@@ -716,22 +981,6 @@ res.status(500).json({ error: "Database query failed" });
 // res.json(results);
 // });
 // });
-
-app.get("/fetchProductslistHoodies", async (req, res) => {
-const exactMatchQuery = `
-SELECT *
-FROM _imgproduct
-WHERE LOWER(img) = LOWER($1)
-`;
-
-try {
-const result = await pool.query(exactMatchQuery, ['BeetrootPowder']);
-res.json(result.rows);
-} catch (err) {
-console.error("Error fetching data:", err.message);
-res.status(500).json({ error: "Database query failed" });
-}
-});
 
 
 // from here
