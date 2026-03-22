@@ -26,7 +26,7 @@ const [selectedThumb, setSelectedThumb] = useState(null);
 
 
 useEffect(() => {
-fetch(`https://omega-zg6z.onrender.com/products/${id}`)
+fetch(`http://localhost:3001/products/${id}`)
 .then(res => res.json())
 .then(data => {
 });
@@ -36,7 +36,7 @@ useEffect(() => {
 const fetchProduct = async () => {
 try {
 const response = await axios.get(
-"https://omega-zg6z.onrender.com/fetchProductslist"
+"http://localhost:3001/fetchProductslist"
 );
 const data = response.data;
 const product = data.find((product) => product.id === parseInt(id));

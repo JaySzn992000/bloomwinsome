@@ -21,7 +21,7 @@ const query = new URLSearchParams(location.search).get("search");
 
 useEffect(() => {
 axios
-.get("http://localhost:3001/fetcharoma")
+.get("https://omega-zg6z.onrender.com/fetcharoma")
 .then((response) => {
 console.log("Fetched Mangoes Pickles products:", response.data); 
 setAllProducts(response.data); 
@@ -37,7 +37,7 @@ console.error("Error fetching Mangoes Pickles products:", error);
 useEffect(() => {
 if (query) {
 axios
-.get("http://localhost:3001/fetcharoma", {
+.get("https://omega-zg6z.onrender.com/fetcharoma", {
 params: { search: query },
 })
 .then((response) => {

@@ -53,7 +53,7 @@ JSON.parse(localStorage.getItem("wishlistStatus")) || {};
 setWishlistStatus(storedWishlistStatus);
 
 axios
-.get("http://localhost:3001/fetchProductslist")
+.get("https://omega-zg6z.onrender.com/fetchProductslist")
 .then((response) => {
 setArrayStore(response.data);
 setFilteredProducts(response.data);
