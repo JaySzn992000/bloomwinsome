@@ -3,8 +3,6 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import Filters from "../components/Filters";
 import Navbar from "../headers_footer/navbar";
-import Filterheader from "../headers_footer/Filterheader";
-import { Helmet } from "react-helmet";
 import axios from "axios";
 import { connect } from "react-redux";
 import { addToCart } from "../action/action";
@@ -111,18 +109,6 @@ alert("Product added to cart!");
 return (
 
 <div>
-<Helmet>
-<title>Fresh Mangoes | Premium Quality Mango Pickles for Sale</title>
-<meta
-name="description"
-content="Taste the tangy and spicy flavor of our homemade mango pickles. Made with fresh ingredients and traditional recipes"
-/>
-<meta
-name="keywords"
-content="Mango Pickle, Homemade Pickle, Spicy Mango Pickle, Buy Mango Pickle, Traditional Mango Pickle"
-/>
-<link rel="canonical" href="https://www.pickles.com/mangoes" />
-</Helmet>
 
 {showFilters && <Navbar />}
 {showFilters && (
