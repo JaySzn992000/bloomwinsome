@@ -195,7 +195,6 @@ max-width: 97%;
 transform: translateX(1.2vw);
 margin-left: 0vw;
 margin-top: 7.7em;
-border: 1px solid black;
 grid-template-columns: repeat(2, 1fr);
 }
 
