@@ -162,8 +162,7 @@ className="review_icon"
 
 <button
 className="add_crtPickle"
-onClick={() => handleAddToCart(product)}
->
+onClick={() => handleAddToCart(product)}>
 <span>ADD TO CART</span>
 </button>
 
