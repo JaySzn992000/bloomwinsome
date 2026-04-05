@@ -42,19 +42,19 @@ padding: 7px;
 .flex_productlist .padding_contain {
 width: 100%;
 padding: 13px;
-margin: -.5em 0em 0.3em 0em;
 }
 
 .review_Cntnr {
 display: flex;
 justify-content: center;
 align-items: center;
+width: 100%;
 gap: 0em;
 transform: translateX(32%);
 }
 
 .review_Cntnr .fa_Review{
-margin-top: .2em;
+margin-top: .7em;
 }
 
 .padding_contain #Review_Img {
@@ -95,7 +95,6 @@ margin: 0.6em auto 0;
 padding: 2px 10px;
 padding-left: 13px;
 padding-right: 6px;
-margin-top: .2em;
 gap: 0.3em;
 width: auto;
 max-width: 79px;
@@ -104,6 +103,7 @@ height: auto;
 flex-wrap: wrap;
 color: #000000;
 border-radius: 17px;
+margin-top: .7em;
 }
 
 .fa-heart_products {
@@ -186,13 +186,13 @@ margin: 0em 0em 0em 0em;
 }
 
 .flex_inr li {
-line-height: 2.3em;
+line-height: 2em;
 }
 
 .flex_productlist {
 display: grid;
-max-width: 97%;
-transform: translateX(1.2vw);
+max-width: 98%;
+transform: translateX(.4vw);
 margin-left: 0vw;
 margin-top: 7.7em;
 grid-template-columns: repeat(2, 1fr);
@@ -211,7 +211,7 @@ margin-top: .5em;
 }
 
 .add_crt {
-padding: 7px;
+padding: 9px;
 width: 98%;
 font-size: .9rem;
 }
@@ -230,6 +230,10 @@ padding: 0px;
 font-size: 1.1rem;
 margin-right: .7em;
 margin-top: .7em;
+}
+
+.review_Cntnr {
+transform: translate(0);
 }
 
 .padding_contain #Review_Img {

@@ -98,17 +98,17 @@ align-items: center;
 gap: 0.5em;
 text-align: center;
 width: fit-content;
-max-width: 79px;
+max-width: 107px;
 margin: 0 auto;
 height: 34px;
 height: auto;
 padding: 9px;
-margin-top: 0em;
 padding-left: 13px;
 padding-right: 11px;
 flex-wrap: wrap;
 color: #000000;
 border-radius: 17px;
+margin-top: .7em;
 }
 
 .review_section {
@@ -116,7 +116,7 @@ display: flex;
 align-items: center;
 gap: 0.3em;
 text-align: center;
-margin-top: 0em;
+margin-top: .7em;
 }
 
 .product_info_container li {
@@ -154,7 +154,7 @@ color: #222;
 background: #231F20;
 color: #fff;
 border: 2px solid transparent;
-padding: .6em 1.8em;
+padding: .65em 1.8em;
 font-size: 1rem;
 margin-top: 1em;
 cursor: pointer;
@@ -212,13 +212,13 @@ width: 100%;
 }
 
 .product_grid_container  {
-width: 98%;
+width: 99%;
 }
 
 .product_cards_wrapper {
 max-width: 100%;
 justify-content: center;
-gap: 0.3em;
+gap: 0.2em;
 }
 
 .single_product_card {
@@ -246,7 +246,7 @@ margin-top: 0em;
 
 .add_crtPickle{
 width: 98%;
-padding: 7px;
+padding: 9px;
 }
 
 .fa-heart_Pickle {
