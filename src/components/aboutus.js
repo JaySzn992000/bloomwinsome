@@ -3,6 +3,7 @@ import Header from "../headers_footer/header";
 import AboutPickle from "../Slider/AboutPickle.jpg";
 import AboutCollectionOne from "../Slider/ourcollectionone.png";
 import AboutCollectionTwo from "../Slider/ourcollectiontwo.png";
+import Banner from "../Slider/Banner1.jpg"
 import "./about.css";
 
 const Aboutus = () => {
@@ -13,7 +14,7 @@ return (
 
 <Navbar></Navbar>
 
-<img className="ListBanner" src="https://www.kimirica.shop/cdn/shop/files/About-Us-Page-BANNER-01_1.jpg?v=1708598103&width=1800"></img>
+<img className="ListBanner" src={Banner}></img>
 
 <section className="about_flex_tw">
 

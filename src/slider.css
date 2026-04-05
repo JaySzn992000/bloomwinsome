@@ -12,6 +12,8 @@ position: relative;
 
 .slide_item img {
 width: 100%;
+height: 90vh;
+object-fit: cover;
 display: block;
 }
 
@@ -32,19 +34,21 @@ pointer-events: none;
 
 @media (max-width: 768px) {
 
-
 .slider_div {
 width: 100%;
 height: auto;
 margin-top: -67px;
 }
 
-.slider_div img {
-width: 100vw;
-height: auto;
+.slide_item img {
+width: 100%;
+height: 65vh;
+object-fit: cover;
+object-position: left;
 }
 
 }
+
 
 
 @media (min-width : 478px) and (max-width : 768px) {

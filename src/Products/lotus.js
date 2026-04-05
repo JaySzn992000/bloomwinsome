@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Filters from "../components/Filters";
 import Navbar from "../headers_footer/navbar";
 import axios from "axios";
+import Banner from "../Slider/Banner1.jpg"
 import "./Categoriesfruits.css";
 import Header from "../headers_footer/header";
 import { addToCart } from "../action/action";
@@ -139,7 +140,7 @@ return (
 
 <Navbar wishlistCount={wishlistCount} cartCount={cartCount} />
 
-<img className="ListBanner" src="https://www.kimirica.shop/cdn/shop/files/Valentine-Store-2025-Inner-Pages-BANNER-01.jpg?v=1768802129&width=1920"></img>
+<img className="ListBanner" src={Banner}></img>
 
 <Filters allProducts={allProducts} onFilterUpdate={handleFilterUpdate} />
 

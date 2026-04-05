@@ -4,6 +4,7 @@ import Navbar from "../headers_footer/navbar";
 import Header from "../headers_footer/header";
 import ContactPickle from "../Slider/Contact_Achar1Hair.jpg";
 import "./Contact.css";
+import Banner2 from "../Slider/Banner2.jpg"
 import TrendingCategory from "./TrendingCategory";
 
 const Contactus = () => {
@@ -76,13 +77,11 @@ return (
 
 <div>
 
-
 <Navbar></Navbar>
 
 <main>
 
-<img className="ListBanner"
-src="https://www.kimirica.shop/cdn/shop/files/Valentine-Store-2025-Inner-Pages-BANNER-01.jpg?v=1768802129&width=1920"></img>
+<img className="ListBanner" src={Banner2}></img>
 
 <form onSubmit={sendEmail} className="form_contact">
 
