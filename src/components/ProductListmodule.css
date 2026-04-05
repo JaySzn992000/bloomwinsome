@@ -191,8 +191,8 @@ line-height: 2em;
 
 .flex_productlist {
 display: grid;
-max-width: 98%;
-transform: translateX(.4vw);
+max-width: 97%;
+transform: translateX(1.2vw);
 margin-left: 0vw;
 margin-top: 7.7em;
 grid-template-columns: repeat(2, 1fr);
@@ -211,7 +211,7 @@ margin-top: .5em;
 }
 
 .add_crt {
-padding: 9px;
+padding: 10px;
 width: 98%;
 font-size: .9rem;
 }
