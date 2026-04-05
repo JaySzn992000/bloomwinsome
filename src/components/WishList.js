@@ -27,7 +27,7 @@ useEffect(() => {
 const fetchProductData = async () => {
 try {
 const response = await axios.get(
-"https://naturalbuti.onrender.com/fetchProductslist"
+"https://omega-zg6z.onrender.com/fetchProductslist"
 );
 setProductData(response.data);
 } catch (error) {
@@ -66,7 +66,6 @@ return (
 )}
 
 
-
 {wishlist && wishlist.length > 0 ? (
 <ul>
 {wishlist.map((item, index) => (
@@ -77,8 +76,6 @@ className="wishlist_item"
 >
 
 <div className="wishlist_details">
-
-
 
 <div>
 
