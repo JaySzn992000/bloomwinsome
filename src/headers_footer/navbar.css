@@ -109,6 +109,11 @@ filter: invert(0);
 color: #000;
 }
 
+.Product_navbar:hover .fa_bars_nav {
+filter: invert(0);
+}
+
+
 .Product_navbar.scrolled {
 position: fixed;
 height: 127px;
