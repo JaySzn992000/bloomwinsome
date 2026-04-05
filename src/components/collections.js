@@ -47,18 +47,17 @@ alert("Product added to cart!");
 }
 };
 
-
 useEffect(() => {
 const storedWishlistStatus =
 JSON.parse(localStorage.getItem("wishlistStatus")) || {};
 setWishlistStatus(storedWishlistStatus);
 
 axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist")
+.get("http://localhost:3001/fetchProductslist")
 .then((response) => {
 setArrayStore(response.data);
 setFilteredProducts(response.data);
-})
+}) 
 
 .catch((error) => {
 console.error("Error fetching data:", error);
@@ -71,7 +70,7 @@ const query = new URLSearchParams(location.search).get("search");
 useEffect(() => {
 if (query) {
 axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist", {
+.get("http://localhost:3001/fetchProductslist", {
 params: { search: query },
 })
 .then((response) => {
@@ -83,7 +82,7 @@ console.error("Error fetching products:", error);
 });
 } else {
 axios
-.get("https://omega-zg6z.onrender.com/fetchProductslist")
+.get("http://localhost:3001/fetchProductslist")
 .then((response) => {
 setAllProducts(response.data);
 setFilteredProducts(response.data);
@@ -157,6 +156,7 @@ return (
 <div className="sticky-wrapper">
 
 <section>
+
 <div>
 
 <div className="flex_productlist">

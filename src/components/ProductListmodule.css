@@ -11,7 +11,7 @@ width: 100%;
 #sticky_products_height {
 height: auto;
 position: relative;
-margin-top: -61.6em;
+margin-top: -60em;
 }
 
 .sticky-wrapper {
@@ -212,7 +212,7 @@ margin-top: .5em;
 
 .add_crt {
 padding: 10px;
-width: 98%;
+width: 97%;
 font-size: .9rem;
 }
 
@@ -222,7 +222,7 @@ padding: 2px;
 }
 
 .flex_productlist {
-gap: 0em;
+gap: .2em;
 }
 
 .fa-heart_products {
@@ -274,6 +274,11 @@ font-size: .9rem;
 
 .flex_productlist .produclist_divContainer {
 max-width: 100%;
+}
+
+.review_Cntnr {
+transform: translateX(0);
+/* It's Very !important */
 }
 
 }

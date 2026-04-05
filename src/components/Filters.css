@@ -1,11 +1,13 @@
 
 .content_sticky {
 height: 150vh;
+margin-top: -5em;
 }
 
 .filters {
 position: sticky;
-top: 121px;
+top: 0;
+margin-top: -3.8em;
 width: 341px;
 padding: 37px;
 padding-bottom: 127px;
@@ -73,8 +75,7 @@ transform: translateX(15%);
 #div_filter .filter_ {
 position: absolute;
 width: 27px;
-right: 3.5em;
-display: none;
+right: 4em;
 cursor: pointer;
 }
 
@@ -176,8 +177,8 @@ right: 3.1em;
 
 #div_filter .filter_ {
 width: 29px;
-right: 7vw;
-margin-top: .3em;
+right: 4.3vw;
+margin-top: 1.1em;
 z-index: 999px;
 display: block;
 }
