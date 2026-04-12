@@ -93,13 +93,14 @@ return (
 
 <Slider />
 
+<Iconicselection></Iconicselection>
+
 <div className="tshirt_Left">
 <Pickles showFilters={showFilters} limit={10}></Pickles>
 </div>
 
 <button onClick={seeAllProducts} className="seeLLProducts">View All</button>
 
-<Iconicselection></Iconicselection>
 <AboutHm></AboutHm>
 <Commitments></Commitments>
 <ShopCategory></ShopCategory>
