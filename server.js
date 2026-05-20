@@ -15,7 +15,6 @@ const pool = require("./config");
 
 app.use(cors({
 origin: [
-'https://shayariforyou-puce.vercel.app',
 'https://winsome-bloom.vercel.app'
 ],
 methods: ['GET', 'POST', 'PUT', 'DELETE'],
