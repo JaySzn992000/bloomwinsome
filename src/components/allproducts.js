@@ -43,6 +43,18 @@ alert("Product added to cart!");
 }
 };
 
+useEffect(() => {
+const storedWishlistStatus =
+JSON.parse(localStorage.getItem("wishlistStatus")) || {};
+
+setWishlistStatus(storedWishlistStatus);
+
+const wishlist =
+JSON.parse(localStorage.getItem("wishlist")) || [];
+
+setWishlistCount(wishlist.length);
+}, []);
+
 // useEffect(() => {
 // const storedWishlistStatus =
 // JSON.parse(localStorage.getItem("wishlistStatus")) || {};
