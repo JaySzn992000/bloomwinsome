@@ -13,13 +13,16 @@ const app = express();
 require("dotenv").config();
 const pool = require("./config");
 
+
 app.use(cors({
 origin: [
-'https://winsome-bloom.vercel.app'
+'https://winsome-bloom.vercel.app',
+'https://www.winsome-bloom.shop'
 ],
 methods: ['GET', 'POST', 'PUT', 'DELETE'],
 credentials: true
 }));
+
 
 
 app.use(express.json());
