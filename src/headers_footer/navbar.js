@@ -385,12 +385,12 @@ BATH & BODY
 </a>
 </li>
 
-<section className={`storeBrand_dropdown ${openMenu.bath ? "open" : ""}`}>
+{/* <section className={`storeBrand_dropdown ${openMenu.bath ? "open" : ""}`}>
 <li><a>Aloe Vera Gel</a></li>
 <li><a>Banana Powder</a></li>
 <li><a>Beetroot Powder</a></li>
 <li><a>Kasturi Haldi</a></li>
-</section>
+</section> */}
 
 </div>
 
