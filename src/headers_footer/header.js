@@ -157,11 +157,11 @@ You have subscribed successfully
 <ul>
 <h4>CONNECT WITH US</h4>
 <li><a>Email: WINSOMEBLOOM.SHOP</a></li>
+<li><a>Phone: +91 77039 75629</a></li>
 <li><a>Address : 15/34,
 House Rd, <br></br>
 U Block, DLF Phase 3, Sector 24, <br></br>
 Gurugram 122002</a></li>
-<li><a>Phone: +91 77039 75629</a></li>
 </ul>
 
 </div>
