@@ -367,12 +367,12 @@ loading="lazy" />
 </li>
 
 <section className={`storeBrand_dropdown ${openMenu.store ? "open" : ""}`}>
-<li><a>M.A.C</a></li>
-<li><a>Maybelline</a></li>
-<li><a>L'Oréal Paris</a></li>
-<li><a>Lakmé</a></li>
-<li><a>Aroma</a></li>
-<li><a>Sugar</a></li>
+<li onClick={naviGatelotus}><a>Lotus Herbals</a></li>
+<li onClick={naviGateSunscreen}><a>O3 Plus</a></li>
+<li onClick={naviGatelorealparis}><a>L'Oréal Paris</a></li>
+<li onClick={naviGatePants}><a>Biotique</a></li>
+<li onClick={naviGatearoma}><a>Aroma</a></li>
+<li onClick={navigateStreax}><a>Streax</a></li>
 </section>
 
 </div>
@@ -385,12 +385,12 @@ BATH & BODY
 </a>
 </li>
 
-{/* <section className={`storeBrand_dropdown ${openMenu.bath ? "open" : ""}`}>
-<li><a>Aloe Vera Gel</a></li>
-<li><a>Banana Powder</a></li>
-<li><a>Beetroot Powder</a></li>
-<li><a>Kasturi Haldi</a></li>
-</section> */}
+<section className={`storeBrand_dropdown ${openMenu.bath ? "open" : ""}`}>
+<li onClick={naviProductFashWash}><a>Face Wash</a></li>
+<li onClick={naviGatefacecream}><a>Face Cream</a></li>
+<li onClick={naviGateShirt}><a>Sunscreen</a></li>
+<li onClick={naviGateShampoo}><a>Shampoo</a></li>
+</section>
 
 </div>
 
