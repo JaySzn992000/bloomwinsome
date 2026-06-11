@@ -390,6 +390,8 @@ BATH & BODY
 <li onClick={naviGatefacecream}><a>Face Cream</a></li>
 <li onClick={naviGateShirt}><a>Sunscreen</a></li>
 <li onClick={naviGateShampoo}><a>Shampoo</a></li>
+<li onClick={naviGateSerum}><a>Hair Serum</a></li>
+<li onClick={naviGatehairColor}><a>Hair Color</a></li>
 </section>
 
 </div>
