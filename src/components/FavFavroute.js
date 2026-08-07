@@ -15,6 +15,7 @@ navi('/collections');
 return (
 
 <div className="fav-wrapper">
+
 <Navbar />
 
 <section className="trending-section">
