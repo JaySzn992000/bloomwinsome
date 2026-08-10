@@ -1,168 +1,255 @@
-.featured_center {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin-top: 4.7em;
-width: 100%;
-padding: 3rem 1rem;
+/* ----- रूट वेरिएबल्स (ब्रांड कलर) ----- */
+:root {
+  --brand-gold: #c49a7a;
+  --brand-dark: #1a1a1a;
+  --brand-bg: #faf7f2;
+  --brand-white: #ffffff;
 }
 
-.featured_center h2 {
-text-align: center;
-margin-bottom: 2rem;
-font-size: 2rem;
-font-family: 'Times New Roman', Times, serif;
-letter-spacing: 1px;
+/* ----- मेन रैपर ----- */
+.featured-wrapper {
+  padding: 5rem 2rem 6rem 2rem;
+  background: var(--brand-bg);
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
-.shopcategory_flex {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(181px, 1fr));
-grid-template-columns: repeat(4, 1fr); 
-gap: 2.7rem;
-max-width: 1320px;
-width: 100%;
-margin-top: .7em;
-justify-items: center;
-align-items: center;
+/* ----- प्रीमियम हेडर (गोल्डन लाइन्स के साथ) ----- */
+.featured-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
 }
 
-.shopcategory_flex img {
-width: 100%;
-max-width: 320px;
-height: 320px;
-object-fit: cover;
-cursor: pointer;
-transition: transform 0.3s ease;
+.featured-line {
+  flex: 0 0 60px;
+  height: 1px;
+  background: var(--brand-gold);
+  opacity: 0.6;
 }
 
-.shopcategory_flex div label {
-font-weight: normal;
-margin-top: 1.3em;
-font-size: 1rem;
+.featured-title {
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-weight: 300;
+  font-size: 2.2rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--brand-dark);
+  margin: 0;
 }
 
-.shopcategory_flex {
-display: flex;
-overflow-x: auto;
-gap: 1rem;
-scroll-snap-type: x mandatory;
--webkit-overflow-scrolling: touch;
-padding-bottom: 1rem;
+/* ----- स्क्रॉल कंटेनर (डेस्कटॉप पर ग्रिड, मोबाइल पर कारसेल) ----- */
+.featured-scroll-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  width: 100%;
 }
 
-.shopcategory_flex::-webkit-scrollbar {
-display: none; 
+/* ----- प्रत्येक कार्ड (प्रीमियम लिफ्ट इफेक्ट) ----- */
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.shopcategory_card {
-scroll-snap-align: start;
-flex-shrink: 0;
-text-align: center;
+.featured-card:hover {
+  transform: translateY(-12px);
 }
 
-.shopcategory_flex button {
-background: #000;
-color: #fff;
-border: 2px solid transparent;
-padding: .9em 2.3em;
-font-size: .9rem;
-margin-top: 1.7em;
-cursor: pointer;
-position: relative;
-overflow: hidden;
-border-radius: 2px;
-transition: color 0.3s ease, border 0.3s ease;
+/* ----- इमेज रैपर (होवर पर ग्लास इफेक्ट) ----- */
+.featured-card-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #f0ebe6;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.02);
+  transition: box-shadow 0.5s ease;
 }
 
-.shopcategory_flex button::before {
-content: "";
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: #fff;
-transition: left 0.4s ease;
-z-index: 0; 
+.featured-card:hover .featured-card-image-wrapper {
+  box-shadow: 0 30px 80px rgba(196, 154, 122, 0.15);
 }
 
-.shopcategory_flex button span {
-position: relative;
-z-index: 1; 
-color: #fff; 
-transition: color 0.3s ease;
+.featured-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.shopcategory_flex button:hover::before {
-left: 0; 
+.featured-card:hover .featured-card-img {
+  transform: scale(1.04);
 }
 
-.shopcategory_flex button:hover span {
-color: #000; 
+/* ----- इमेज पर ओवरले (होवर पर आता है) ----- */
+.featured-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.3);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: 24px;
 }
 
-.shopcategory_flex button:hover {
-border: 2px solid #000; 
+.featured-card:hover .featured-card-overlay {
+  opacity: 1;
 }
 
-
-
-@media (min-width: 768px) and (max-width: 1245px) {
-
-.featured_center h2 {
-font-size: 1.6rem;
+/* ----- शानदार बटन (न्यूनतम डिज़ाइन) ----- */
+.featured-card-btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 0.9rem 2.8rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(10px);
+  opacity: 0;
 }
 
+.featured-card:hover .featured-card-btn {
+  transform: translateY(0);
+  opacity: 1;
 }
 
+.featured-card-btn:hover {
+  background: #ffffff;
+  color: #1a1a1a;
+  border-color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
 
+/* ----- कार्ड की टेक्स्ट कंटेंट ----- */
+.featured-card-content {
+  padding: 1.5rem 0.5rem 0 0.5rem;
+  text-align: center;
+}
+
+.featured-card-sub {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brand-gold);
+  margin: 0 0 0.2rem 0;
+  opacity: 0.7;
+}
+
+.featured-card-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  color: var(--brand-dark);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.featured-card:hover .featured-card-label {
+  color: var(--brand-gold);
+}
+
+/* -------------------------------------- */
+/* ----- RESPONSIVE (प्रीमियम मोबाइल कारसेल) ----- */
+/* -------------------------------------- */
+
+@media (max-width: 1200px) {
+  .featured-scroll-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
 
 @media (max-width: 768px) {
+  .featured-wrapper {
+    padding: 3rem 1.5rem 4rem 1.5rem;
+  }
 
-.shopcategory_flex {
-grid-template-columns: repeat(3, 1fr); 
-gap: 1rem;
-margin-top: .2em;
+  .featured-title {
+    font-size: 1.6rem;
+    letter-spacing: 0.2em;
+  }
+  .featured-line {
+    flex: 0 0 40px;
+  }
+
+  .featured-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1.5rem;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .featured-scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .featured-card {
+    flex: 0 0 75%;
+    max-width: 320px;
+    scroll-snap-align: center;
+  }
+
+  .featured-card:hover {
+    transform: translateY(-6px); /* मोबाइल पर हल्का इफेक्ट */
+  }
+
+  .featured-card-image-wrapper {
+    border-radius: 20px;
+  }
+
+  .featured-card-label {
+    font-size: 1.2rem;
+  }
+
+  .featured-card-btn {
+    padding: 0.7rem 2rem;
+    font-size: 0.65rem;
+  }
 }
 
-.shopcategory_flex img {
-width: 100%;
-max-width: 275px;
-}
+@media (max-width: 480px) {
+  .featured-wrapper {
+    padding: 2rem 0.5rem 3rem 0.5rem;
+  }
 
-.shopcategory_flex {
-display: flex;
-overflow-x: auto;
-gap: 1rem;
-scroll-snap-type: x mandatory;
--webkit-overflow-scrolling: touch;
-padding-bottom: 1rem;
-}
+  .featured-header {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .featured-title {
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+  }
+  .featured-line {
+    flex: 0 0 25px;
+  }
 
-.shopcategory_flex::-webkit-scrollbar {
-display: none; 
-}
-
-.shopcategory_card {
-scroll-snap-align: start;
-flex-shrink: 0;
-text-align: center;
-}
-
-.featured_center h2 {
-font-size: 1.4rem;
-}
-
-}
-
-
-@media (max-width: 360px) {
-
-.shopcategory_flex {
-grid-template-columns: repeat(3, 1fr); 
-gap: 0.8rem;
-}
-
+  .featured-card {
+    flex: 0 0 85%;
+    max-width: 280px;
+  }
 }

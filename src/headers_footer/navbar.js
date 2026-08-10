@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
 import LogoNitiArya from "../Logo/LogoNitiArya.png";
 import HeartIcon from "../Images_ToolsSymbols/Heart.jpg";
 import UserIcon from "../Images_ToolsSymbols/user.jpg";
@@ -21,7 +21,7 @@ const location = useLocation();
 
 const [loggedInUser, setLoggedInUser] = useState(null);
 const [scrolled, setScrolled] = useState(false);
-const [searchOpen, setSearchOpen] = useState(false);  
+const [searchOpen, setSearchOpen] = useState(false);
 const [searchQuery, setSearchQuery] = useState("");
 const [mobileOpen, setMobileOpen] = useState(false);
 const [wishlistCount, setWishlistCount] = useState(0);
@@ -92,10 +92,13 @@ navigate("/collections");
 };
 
 const naviToBathBody = () => navigate("/bath-body");
+const naviToHomeFragrance = () => navigate("/skincare");
+const naviToPerfume = () => navigate("/perfume");
+const naviToBridgerton = () => navigate("/hair-care");
+const naviToGifting = () => navigate("/makeup");
 const naviToSkinCare = () => navigate("/skincare");
 const naviToHairCare = () => navigate("/hair-care");
 const naviToMakeup = () => navigate("/makeup");
-const naviToPerfume = () => navigate("/perfume");
 
 const naviProductFashWash = () => navigate("/face-wash");
 const naviGatefacecream = () => navigate("/face-cream");
@@ -111,12 +114,10 @@ const naviGatearoma = () => navigate("/aroma");
 const navigateStreax = () => navigate("/streax");
 
 const handleSearchKeyDown = (e) => {
-if (e.key === "Enter") {
-if (searchQuery.trim()) {
+if (e.key === "Enter" && searchQuery.trim()) {
 navigate(`/collections?search=${encodeURIComponent(searchQuery)}`);
 setSearchOpen(false);
 setSearchQuery("");
-}
 }
 };
 
@@ -139,10 +140,7 @@ return (
 
 <div>
 
-<nav
-className={`winsome-navbar ${scrolled ? "scrolled" : ""} ${
-isDarkNavbarPage ? "forceDark" : ""
-}`}>
+<nav className={`winsome-navbar ${scrolled ? "scrolled" : ""} ${isDarkNavbarPage ? "forceDark" : ""}`}>
 
 <div className="navbar-left">
 <button className="navbar-bars" onClick={toggleMobile} aria-label="Menu">
@@ -156,100 +154,133 @@ alt="Niti Arya"/>
 </div>
 
 <ul className="navbar-center">
+
 <li className="nav-item">
 <button className="nav-link" onClick={seeAllProducts}>
 Collections
 </button>
 <div className="mega-dropdown">
+<div className="mega-dropdown-inner">
 <div className="mega-column">
-<span className="mega-title">Bath & Body</span>
+<span className="mega-title">Bath &amp; Body</span>
 <a onClick={naviProductFashWash}>Face Wash</a>
 <a onClick={naviGatefacecream}>Face Cream</a>
 <a onClick={naviGateShirt}>Sunscreen</a>
 <a onClick={naviGateShampoo}>Shampoo</a>
+</div>
+
+<div className="mega-column">
+<span className="mega-title">Skin Care</span>
+<a onClick={naviGatelotus}>Lotus Herbals</a>
+<a onClick={naviGateSunscreen}>O3 Plus</a>
+</div>
+
+<div className="mega-column">
+<span className="mega-title">Hair Care</span>
+<a onClick={naviGatelorealparis}>L'Oréal Paris</a>
+<a onClick={navigateStreax}>Streax</a>
 <a onClick={naviGateSerum}>Hair Serum</a>
 <a onClick={naviGatehairColor}>Hair Color</a>
 </div>
+
 <div className="mega-column">
-<span className="mega-title">Skin Care</span>
-{/* <a onClick={naviToSkinCare}>All Skin Care</a> */}
-<a onClick={naviGateSunscreen}>O3 Plus</a>
-<a onClick={naviGatelotus}>Lotus Herbals</a>
-</div>
-<div className="mega-column">
-<span className="mega-title">Hair Care</span>
-{/* <a onClick={naviToHairCare}>All Hair Care</a> */}
-<a onClick={naviGatelorealparis}>L'Oréal Paris</a>
-<a onClick={navigateStreax}>Streax</a>
-</div>
-<div className="mega-column">
-<span className="mega-title">Makeup & Perfume</span>
-<a onClick={naviToMakeup}>Makeup</a>
+<span className="mega-title">Makeup &amp; Perfume</span>
+{/* <a onClick={naviToMakeup}>Makeup</a> */}
 <a onClick={naviToPerfume}>Perfume</a>
 <a onClick={naviGatePants}>Biotique</a>
 <a onClick={naviGatearoma}>Aroma</a>
 </div>
+
 <div className="mega-column featured">
 <span className="mega-title">Featured</span>
+<div className="mega-img-group">
 <img src={facilnav} className="mega-img" alt="face" />
-<img src={lipstick} className="mega-img" alt="lipstick" />
+</div>
+</div>
 </div>
 </div>
 </li>
 
 <li className="nav-item">
 <button className="nav-link" onClick={naviToBathBody}>
-Bath & Body
+Bath &amp; Body
 </button>
 <div className="mega-dropdown bath-dropdown">
+<div className="mega-dropdown-inner">
+
 <div className="mega-column">
-<span className="mega-title">Shop by Category</span>
-<a onClick={naviProductFashWash}>Face Wash</a>
-<a onClick={naviGatefacecream}>Face Cream</a>
-<a onClick={naviGateShirt}>Sunscreen</a>
-<a onClick={naviGateShampoo}>Shampoo</a>
-<a onClick={naviGateSerum}>Hair Serum</a>
-<a onClick={naviGatehairColor}>Hair Color</a>
+<span className="mega-title">Bath Care</span>
+<a>Shower Gel</a>
+<a>Bubble Bath</a>
+<a>Epsom Bath Salt</a>
+<a>Body Scrub</a>
+<a>Luxury Soap</a>
 </div>
-<div className="mega-column">
-<span className="mega-title">Essentials</span>
-<img src={compact} className="mega-img" alt="compact" />
-<img src={eyeliner} className="mega-img" alt="eyeliner" />
-</div>
-<div className="mega-column">
-<span className="mega-title">New Arrivals</span>
-<img src={facilnav} className="mega-img" alt="face" />
-<img src={lipstick} className="mega-img" alt="lipstick" />
+
+{/* <div className="mega-column">
+<span className="mega-title">Body Care</span>
+<a>Body Lotion</a>
+<a>Body Mists</a>
+<a>Body Cream</a>
+<a>Bath &amp; Body Care Duos</a>
+</div> */}
+
+{/* <div className="mega-column">
+<span className="mega-title">Hand Care</span>
+<a>Hand Wash Refills</a>
+<a>Hand Wash</a>
+<a>Hand Lotion</a>
+<a>Hand Cream</a>
+<a>Hand Caddy Set</a>
+</div> */}
+
+{/* <div className="mega-column">
+<span className="mega-title">Hair Care</span>
+<a>Shampoo</a>
+<a>Conditioner</a>
+<a>Hair Care Duo</a>
+</div> */}
+
 </div>
 </div>
 </li>
 
 <li className="nav-item">
-<button className="nav-link" onClick={naviToSkinCare}>
+<button className="nav-link" onClick={naviToHomeFragrance}>
 Skin Care
 </button>
 </li>
-<li className="nav-item">
-<button className="nav-link" onClick={naviToHairCare}>
-Hair Care
-</button>
-</li>
-<li className="nav-item">
-<button className="nav-link" onClick={naviToMakeup}>
-Makeup
-</button>
-</li>
+
 <li className="nav-item">
 <button className="nav-link" onClick={naviToPerfume}>
 Perfume
 </button>
 </li>
+
+<li className="nav-item">
+<button className="nav-link" onClick={naviToBridgerton}>
+Hair Care
+</button>
+</li>
+
+<li className="nav-item">
+<button className="nav-link" onClick={naviToGifting}>
+Makeup
+</button>
+</li>
+
+{/* <li className="nav-item">
+<button className="nav-link" onClick={naviToSkinCare}>
+Skin Care
+</button>
+</li> */}
+
 </ul>
 
 <div className="navbar-right">
 <div className="search-wrapper">
 <button className="search-btn" onClick={toggleSearch} aria-label="Search">
-<img src={SearchIcon} alt="search" />
+<img className="search_box" src={SearchIcon} alt="search" />
 </button>
 </div>
 
@@ -264,10 +295,7 @@ Perfume
 <button className="auth-link" onClick={logout}>Logout</button>
 </div>
 ) : (
-<>
 <img src={UserIcon} className="nav-icon" onClick={naviRegist} alt="login" />
-{/* <button className="auth-link" onClick={naviToLogin}>Log In</button> */}
-</>
 )}
 
 <div className="icon-wrapper">
@@ -293,14 +321,13 @@ onClick={() => {
 setSearchOpen(false);
 setSearchQuery("");
 }}
-aria-label="Close search"
->
+aria-label="Close search">
 ✕
 </button>
 <input
 type="text"
 className="search-overlay-input"
-placeholder="Search for products, brands, categories…"
+placeholder="Search for products, brands…"
 value={searchQuery}
 onChange={(e) => setSearchQuery(e.target.value)}
 onKeyDown={handleSearchKeyDown}
@@ -316,7 +343,7 @@ Search
 
 <div className={`mobile-menu ${mobileOpen ? "open" : ""}`}>
 <button className="mobile-close" onClick={toggleMobile}>
-<i className="fas fa-times" />
+✕
 </button>
 
 <div className="mm-brand">
@@ -325,13 +352,45 @@ Search
 
 <div className="mm-section">
 <button
-className={`mm-link ${openMenu.collections ? "open" : ""}`}
-onClick={() => toggleMenu("collections")}
->
-Collections <span className="mm-arrow"><i className="fas fa-chevron-right" /></span>
+className={`mm-link ${openMenu.bath ? "open" : ""}`}
+onClick={() => toggleMenu("bath")}>
+
+Bath &amp; Body <span className="mm-arrow">▶</span>
 </button>
+<div className={`mm-sub ${openMenu.bath ? "open" : ""}`}>
+<a onClick={naviProductFashWash}>Face Wash</a>
+<a onClick={naviGatefacecream}>Face Cream</a>
+<a onClick={naviGateShirt}>Sunscreen</a>
+<a onClick={naviGateShampoo}>Shampoo</a>
+</div>
+</div>
+
+<div className="mm-section">
+<button className="mm-link" onClick={naviToHomeFragrance}>Home Fragrance</button>
+</div>
+<div className="mm-section">
+<button className="mm-link" onClick={naviToPerfume}>Perfume</button>
+</div>
+<div className="mm-section">
+<button className="mm-link" onClick={naviToBridgerton}>Hair Care</button>
+</div>
+<div className="mm-section">
+<button className="mm-link" onClick={naviToGifting}>Gifting</button>
+</div>
+<div className="mm-section">
+<button className="mm-link" onClick={naviToSkinCare}>Skin Care</button>
+</div>
+
+<div className="mm-section">
+
+<button
+className={`mm-link ${openMenu.collections ? "open" : ""}`}
+onClick={() => toggleMenu("collections")}>
+Collections <span className="mm-arrow">▶</span>
+</button>
+
 <div className={`mm-sub ${openMenu.collections ? "open" : ""}`}>
-<a onClick={naviToBathBody}>Bath & Body</a>
+<a onClick={naviToBathBody}>Bath &amp; Body</a>
 <a onClick={naviToSkinCare}>Skin Care</a>
 <a onClick={naviToHairCare}>Hair Care</a>
 <a onClick={naviToMakeup}>Makeup</a>
@@ -340,40 +399,11 @@ Collections <span className="mm-arrow"><i className="fas fa-chevron-right" /></s
 </div>
 
 <div className="mm-section">
-<button
-className={`mm-link ${openMenu.bath ? "open" : ""}`}
-onClick={() => toggleMenu("bath")}
->
-Bath & Body <span className="mm-arrow"><i className="fas fa-chevron-right" /></span>
-</button>
-<div className={`mm-sub ${openMenu.bath ? "open" : ""}`}>
-<a onClick={naviProductFashWash}>Face Wash</a>
-<a onClick={naviGatefacecream}>Face Cream</a>
-<a onClick={naviGateShirt}>Sunscreen</a>
-<a onClick={naviGateShampoo}>Shampoo</a>
-<a onClick={naviGateSerum}>Hair Serum</a>
-<a onClick={naviGatehairColor}>Hair Color</a>
-</div>
-</div>
-
-<div className="mm-section">
-<button className="mm-link" onClick={naviToSkinCare}>Skin Care</button>
-</div>
-<div className="mm-section">
-<button className="mm-link" onClick={naviToHairCare}>Hair Care</button>
-</div>
-<div className="mm-section">
-<button className="mm-link" onClick={naviToMakeup}>Makeup</button>
-</div>
-<div className="mm-section">
-<button className="mm-link" onClick={naviToPerfume}>Perfume</button>
-</div>
-
-<div className="mm-section">
 <span className="mm-link" style={{ pointerEvents: "none", opacity: 0.6 }}>
 Brands
 </span>
-<div className="mm-sub" style={{ maxHeight: "200px", paddingLeft: "1rem" }}>
+
+<div className="mm-sub open">
 <a onClick={naviGatelotus}>Lotus Herbals</a>
 <a onClick={naviGateSunscreen}>O3 Plus</a>
 <a onClick={naviGatelorealparis}>L'Oréal Paris</a>

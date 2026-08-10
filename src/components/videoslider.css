@@ -1,72 +1,472 @@
+/* ── Global Reset ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Container ── */
 .arrivals_container {
-width: 100%;
-margin: auto;
-margin-top: 3em;
-text-align: center;
-padding: 11px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  background: linear-gradient(145deg, #f9f0f5 0%, #fce4ec 100%);
+  border-radius: 48px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
 }
 
+/* Glow accents (makeup theme – pink & gold) */
+.arrivals_glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+.arrivals_glow--1 {
+  width: 400px;
+  height: 400px;
+  top: -150px;
+  right: -100px;
+  background: radial-gradient(circle, #f9a8d4, #f472b6);
+}
+.arrivals_glow--2 {
+  width: 350px;
+  height: 350px;
+  bottom: -120px;
+  left: -80px;
+  background: radial-gradient(circle, #fcd34d, #fbbf24);
+}
+.arrivals_container > *:not(.arrivals_glow) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ── */
+.arrivals_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2.8rem;
+}
+.arrivals_header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.arrivals_badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #be185d;
+  background: rgba(190, 24, 93, 0.08);
+  padding: 0.35rem 1.2rem;
+  border-radius: 100px;
+  width: fit-content;
+  border: 1px solid rgba(190, 24, 93, 0.12);
+  backdrop-filter: blur(6px);
+}
 .arrivals_container h2 {
-font-size: 1.6rem;
-font-weight: normal;
-margin-bottom: 1.2em;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+}
+.arrivals_subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #4a4a5a;
+  margin-top: 0.1rem;
 }
 
+/* ── Controls ── */
+.arrivals_controls {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+.arrivals_controls button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  color: #1a1a2e;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+.arrivals_controls button:hover {
+  background: #ffffff;
+  border-color: #ec4899;
+  transform: scale(1.06);
+  box-shadow: 0 8px 30px rgba(236, 72, 153, 0.15);
+}
+.arrivals_controls button:active {
+  transform: scale(0.92);
+}
+.arrivals_controls button svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Scrollable Flex ── */
 .arrivals_flex {
-display: flex;
-justify-content: flex-start;
-gap: 0em;
-overflow-x: auto;
-scroll-behavior: smooth;
-scrollbar-width: none;
--webkit-overflow-scrolling: touch;
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.5rem 0.2rem 1.8rem 0.2rem;
+  margin: 0 -0.2rem;
 }
-
 .arrivals_flex::-webkit-scrollbar {
-display: none;
+  display: none;
 }
 
+/* ── Card ── */
 .arrival_card {
-flex-shrink: 0;
-width: 250px;
-scroll-snap-align: start;
-background: #fff;
-padding: 8px;
+  flex-shrink: 0;
+  width: 280px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  border-radius: 28px;
+  padding: 12px 12px 18px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  scroll-snap-align: start;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+.arrival_card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 28px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(251, 191, 36, 0.15));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.arrival_card:hover::before {
+  opacity: 1;
+}
+.arrival_card:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: rgba(236, 72, 153, 0.2);
+  box-shadow: 0 20px 60px rgba(236, 72, 153, 0.08);
+  background: rgba(255, 255, 255, 0.9);
 }
 
-.arrival_video {
-width: 100%;
-height: auto;
-border-radius: 11px;
-object-fit: cover;
+/* ── Video Wrapper ── */
+.arrival_video-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #f1f1f1;
+  aspect-ratio: 4 / 5;
+}
+.arrival_video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+  transition: transform 0.6s ease;
+}
+.arrival_card:hover .arrival_video-wrapper video {
+  transform: scale(1.03);
 }
 
+/* ── Video Overlay & Play Icon ── */
+.arrival_video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.2) 100%);
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.arrival_card:hover .arrival_video-overlay {
+  opacity: 1;
+}
+.arrival_play-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transform: scale(0.8);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+.arrival_card:hover .arrival_play-icon {
+  transform: scale(1);
+}
+.arrival_play-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-left: 4px;
+}
+
+/* ── Card Footer ── */
+.arrival_card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0.2rem 0.2rem 0.2rem;
+}
 .arrival_title {
-margin-top: 0.6em;
-font-size: 1rem;
-font-weight: 500;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  letter-spacing: -0.01em;
+}
+.arrival_meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.arrival_duration {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #6b7280;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 0.2rem 0.8rem;
+  border-radius: 100px;
+}
+.arrival_like {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+.arrival_like svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: #6b7280;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.arrival_card:hover .arrival_like {
+  color: #1a1a2e;
+}
+.arrival_card:hover .arrival_like svg {
+  stroke: #ec4899;
 }
 
+/* ── Scroll Dots ── */
+.arrivals_scroll-hint {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 0.7rem;
+}
+.arrivals_scroll-hint span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  cursor: default;
+}
+.arrivals_scroll-hint span.active {
+  background: #ec4899;
+  width: 28px;
+  border-radius: 100px;
+  box-shadow: 0 0 24px rgba(236, 72, 153, 0.3);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .arrivals_container {
+    padding: 2.5rem 1.8rem;
+    border-radius: 36px;
+  }
+  .arrivals_container h2 {
+    font-size: 2.2rem;
+  }
+  .arrival_card {
+    width: 240px;
+  }
+}
 
 @media (max-width: 768px) {
-
-.arrivals_container {
-width: 100%;
-margin-top: 2em;
-padding: 7px;
+  .arrivals_container {
+    padding: 2rem 1.2rem;
+    border-radius: 28px;
+  }
+  .arrivals_header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  .arrivals_container h2 {
+    font-size: 1.8rem;
+  }
+  .arrivals_subtitle {
+    font-size: 0.9rem;
+  }
+  .arrivals_controls {
+    align-self: flex-end;
+  }
+  .arrivals_controls button {
+    width: 42px;
+    height: 42px;
+  }
+  .arrivals_controls button svg {
+    width: 18px;
+    height: 18px;
+  }
+  .arrival_card {
+    width: 210px;
+    padding: 10px 10px 14px 10px;
+    border-radius: 22px;
+  }
+  .arrival_video-wrapper {
+    border-radius: 16px;
+  }
+  .arrival_title {
+    font-size: 0.95rem;
+  }
+  .arrival_play-icon {
+    width: 52px;
+    height: 52px;
+  }
+  .arrival_play-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+  .arrivals_scroll-hint {
+    margin-top: 1.5rem;
+  }
+  .arrivals_scroll-hint span {
+    width: 8px;
+    height: 8px;
+  }
+  .arrivals_scroll-hint span.active {
+    width: 22px;
+  }
 }
 
-.arrivals_flex {
-gap: 0em;
-}
-
-.arrival_card {
-width: 75%;
-}
-
-.arrival_title {
-font-size: 0.9rem;
-}
-
+@media (max-width: 480px) {
+  .arrivals_container {
+    padding: 1.2rem 0.8rem;
+    border-radius: 20px;
+  }
+  .arrivals_container h2 {
+    font-size: 1.4rem;
+  }
+  .arrivals_subtitle {
+    font-size: 0.8rem;
+  }
+  .arrivals_badge {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.9rem;
+  }
+  .arrival_card {
+    width: 170px;
+    padding: 6px 6px 10px 6px;
+    border-radius: 16px;
+  }
+  .arrival_video-wrapper {
+    border-radius: 12px;
+    aspect-ratio: 3 / 4;
+  }
+  .arrival_title {
+    font-size: 0.8rem;
+  }
+  .arrival_duration {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.5rem;
+  }
+  .arrival_like {
+    font-size: 0.6rem;
+  }
+  .arrival_like svg {
+    width: 14px;
+    height: 14px;
+  }
+  .arrivals_controls button {
+    width: 36px;
+    height: 36px;
+  }
+  .arrivals_controls button svg {
+    width: 16px;
+    height: 16px;
+  }
+  .arrival_play-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .arrival_play-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  .arrivals_flex {
+    gap: 0.8rem;
+    padding-bottom: 1rem;
+  }
+  .arrivals_scroll-hint {
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .arrivals_scroll-hint span {
+    width: 6px;
+    height: 6px;
+  }
+  .arrivals_scroll-hint span.active {
+    width: 16px;
+  }
 }

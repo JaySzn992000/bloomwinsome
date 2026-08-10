@@ -1,60 +1,55 @@
-import o3plussunscreen from "../Slider/o3plusessunscreen.png"
-import o3plushandmask from "../Slider/o3plushandmask.png"
-import o3pluspedicure from "../Slider/o3pluspedicure.png"
-import o3plushydrogelmask from "../Slider/o3plushydrogelmask.png"
+import o3plussunscreen from "../Slider/o3plusessunscreen.png";
+import o3plushandmask from "../Slider/o3plushandmask.png";
+import o3pluspedicure from "../Slider/o3pluspedicure.png";
+import o3plushydrogelmask from "../Slider/o3plushydrogelmask.png";
 import "./Featured.css";
 import { useNavigate } from "react-router";
 
 const Featured = () => {
+  const navi = useNavigate();
 
-const navi = useNavigate()
+  const naviCollections = () => {
+    navi("/collections");
+  };
 
-const naviCollections = () => {
-navi('/collections')
-}
+  // डेटा को अर्रे में रखना बेहतर प्रैक्टिस है
+  const featuredItems = [
+    { id: 1, img: o3plussunscreen, label: "Muted Pastels", sub: "Sunscreen" },
+    { id: 2, img: o3plushandmask, label: "Diva Dreams", sub: "Mascara" },
+    { id: 3, img: o3pluspedicure, label: "Luminous Glow", sub: "Foundation" },
+    { id: 4, img: o3plushydrogelmask, label: "Velvet Finish", sub: "Compact Powder" },
+  ];
 
+  return (
+    <div className="featured-wrapper">
+      {/* प्रीमियम हेडर - गोल्डन एक्सेंट लाइन्स के साथ */}
+      <div className="featured-header">
+        <span className="featured-line"></span>
+        <h2 className="featured-title">Featured In</h2>
+        <span className="featured-line"></span>
+      </div>
 
-return (
-
-<div>
-
-<div className="featured_center">
-
-<h2>FEATURED IN</h2>
-
-<section className="shopcategory_flex">
-<div className="shopcategory_card">
-<img src={o3plussunscreen}></img>
-<label>Muted Pastels</label>
-<button onClick={naviCollections} ><span>DISCOVER</span></button>
-</div>
-
-<div className="shopcategory_card">
-<img src={o3plushandmask}></img>
-<label>Diva Dreams Mascara</label>
-<button onClick={naviCollections} ><span>DISCOVER</span></button>
-</div>
-
-<div className="shopcategory_card">
-<img src={o3pluspedicure}></img>
-<label>Foundation</label>
-<button onClick={naviCollections} ><span>DISCOVER</span></button>
-</div>
-
-<div className="shopcategory_card">
-<img src={o3plushydrogelmask}></img>
-<label>Compact Powder</label>
-<button onClick={naviCollections} ><span>DISCOVER</span></button>
-</div>
-
-</section>
-
-</div>
-
-</div>
-
-)
-
-} 
+      {/* कार्ड्स कंटेनर */}
+      <div className="featured-scroll-container">
+        {featuredItems.map((item) => (
+          <div className="featured-card" key={item.id}>
+            <div className="featured-card-image-wrapper">
+              <img src={item.img} alt={item.label} className="featured-card-img" />
+              <div className="featured-card-overlay">
+                <button className="featured-card-btn" onClick={naviCollections}>
+                  Discover
+                </button>
+              </div>
+            </div>
+            <div className="featured-card-content">
+              <p className="featured-card-sub">{item.sub}</p>
+              <h3 className="featured-card-label">{item.label}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default Featured;

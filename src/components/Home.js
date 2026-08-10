@@ -87,7 +87,6 @@ naviGateProductsAll('/collections')
 return (
 
 <div>
-
 <Topnav></Topnav>
 
 <Navbar />
