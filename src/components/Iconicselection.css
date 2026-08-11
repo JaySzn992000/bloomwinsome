@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 .iconic-wrapper {
@@ -81,6 +82,7 @@ box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.02);
 }
 
 @keyframes iconicFadeUp {
+
 0% {
 opacity: 0;
 transform: translateY(16px);
@@ -89,6 +91,7 @@ transform: translateY(16px);
 opacity: 1;
 transform: translateY(0);
 }
+
 }
 
 .iconic-image-wrap {
@@ -109,7 +112,6 @@ transition: transform 0.6s ease;
 .iconic-card:hover .iconic-img {
 transform: scale(1.04);
 }
-
 
 .iconic-overlay {
 position: absolute;
@@ -195,6 +197,7 @@ max-width: 180px;
 .iconic-title {
 font-size: 2.2rem;
 }
+
 }
 
 
@@ -272,4 +275,5 @@ font-size: 0.7rem;
 width: 4px;
 height: 4px;
 }
+
 }

@@ -1,255 +1,243 @@
-/* ----- रूट वेरिएबल्स (ब्रांड कलर) ----- */
 :root {
-  --brand-gold: #c49a7a;
-  --brand-dark: #1a1a1a;
-  --brand-bg: #faf7f2;
-  --brand-white: #ffffff;
+--brand-gold: #c49a7a;
+--brand-dark: #1a1a1a;
+--brand-bg: #faf7f2;
+--brand-white: #ffffff;
 }
 
-/* ----- मेन रैपर ----- */
 .featured-wrapper {
-  padding: 5rem 2rem 6rem 2rem;
-  background: var(--brand-bg);
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
+padding: 5rem 2rem 6rem 2rem;
+background: var(--brand-bg);
+width: 100%;
+max-width: 1440px;
+margin: 0 auto;
 }
 
-/* ----- प्रीमियम हेडर (गोल्डन लाइन्स के साथ) ----- */
 .featured-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 4rem;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 2rem;
+margin-bottom: 4rem;
 }
 
 .featured-line {
-  flex: 0 0 60px;
-  height: 1px;
-  background: var(--brand-gold);
-  opacity: 0.6;
+flex: 0 0 60px;
+height: 1px;
+background: var(--brand-gold);
+opacity: 0.6;
 }
 
 .featured-title {
-  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
-  font-weight: 300;
-  font-size: 2.2rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--brand-dark);
-  margin: 0;
+font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+font-weight: 300;
+font-size: 2.2rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(--brand-dark);
+margin: 0;
 }
 
-/* ----- स्क्रॉल कंटेनर (डेस्कटॉप पर ग्रिड, मोबाइल पर कारसेल) ----- */
 .featured-scroll-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
-  width: 100%;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 2.5rem;
+width: 100%;
 }
 
-/* ----- प्रत्येक कार्ड (प्रीमियम लिफ्ट इफेक्ट) ----- */
 .featured-card {
-  display: flex;
-  flex-direction: column;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+display: flex;
+flex-direction: column;
+transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .featured-card:hover {
-  transform: translateY(-12px);
+transform: translateY(-12px);
 }
 
-/* ----- इमेज रैपर (होवर पर ग्लास इफेक्ट) ----- */
 .featured-card-image-wrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #f0ebe6;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.02);
-  transition: box-shadow 0.5s ease;
+position: relative;
+width: 100%;
+aspect-ratio: 1 / 1;
+border-radius: 24px;
+overflow: hidden;
+background: #f0ebe6;
+box-shadow: 0 20px 50px rgba(0, 0, 0, 0.02);
+transition: box-shadow 0.5s ease;
 }
 
 .featured-card:hover .featured-card-image-wrapper {
-  box-shadow: 0 30px 80px rgba(196, 154, 122, 0.15);
+box-shadow: 0 30px 80px rgba(196, 154, 122, 0.15);
 }
 
 .featured-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .featured-card:hover .featured-card-img {
-  transform: scale(1.04);
+transform: scale(1.04);
 }
 
-/* ----- इमेज पर ओवरले (होवर पर आता है) ----- */
 .featured-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(26, 26, 26, 0.3);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  border-radius: 24px;
+position: absolute;
+inset: 0;
+background: rgba(26, 26, 26, 0.3);
+backdrop-filter: blur(2px);
+-webkit-backdrop-filter: blur(2px);
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 0;
+transition: opacity 0.5s ease;
+border-radius: 24px;
 }
 
 .featured-card:hover .featured-card-overlay {
-  opacity: 1;
+opacity: 1;
 }
 
-/* ----- शानदार बटन (न्यूनतम डिज़ाइन) ----- */
 .featured-card-btn {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: #ffffff;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  padding: 0.9rem 2.8rem;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: translateY(10px);
-  opacity: 0;
+font-family: 'Inter', sans-serif;
+font-weight: 300;
+font-size: 0.7rem;
+letter-spacing: 0.25em;
+text-transform: uppercase;
+color: #ffffff;
+background: transparent;
+border: 1px solid rgba(255, 255, 255, 0.6);
+padding: 0.9rem 2.8rem;
+border-radius: 50px;
+cursor: pointer;
+transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+transform: translateY(10px);
+opacity: 0;
 }
 
 .featured-card:hover .featured-card-btn {
-  transform: translateY(0);
-  opacity: 1;
+transform: translateY(0);
+opacity: 1;
 }
 
 .featured-card-btn:hover {
-  background: #ffffff;
-  color: #1a1a1a;
-  border-color: #ffffff;
-  transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+background: #ffffff;
+color: #1a1a1a;
+border-color: #ffffff;
+transform: scale(1.05);
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* ----- कार्ड की टेक्स्ट कंटेंट ----- */
 .featured-card-content {
-  padding: 1.5rem 0.5rem 0 0.5rem;
-  text-align: center;
+padding: 1.5rem 0.5rem 0 0.5rem;
+text-align: center;
 }
 
 .featured-card-sub {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: 0.6rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--brand-gold);
-  margin: 0 0 0.2rem 0;
-  opacity: 0.7;
+font-family: 'Inter', sans-serif;
+font-weight: 300;
+font-size: 0.6rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(--brand-gold);
+margin: 0 0 0.2rem 0;
+opacity: 0.7;
 }
 
 .featured-card-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
-  font-size: 1.4rem;
-  letter-spacing: 0.02em;
-  color: var(--brand-dark);
-  margin: 0;
-  transition: color 0.3s ease;
+font-family: 'Cormorant Garamond', serif;
+font-weight: 500;
+font-size: 1.4rem;
+letter-spacing: 0.02em;
+color: var(--brand-dark);
+margin: 0;
+transition: color 0.3s ease;
 }
 
 .featured-card:hover .featured-card-label {
-  color: var(--brand-gold);
+color: var(--brand-gold);
 }
 
-/* -------------------------------------- */
-/* ----- RESPONSIVE (प्रीमियम मोबाइल कारसेल) ----- */
-/* -------------------------------------- */
 
 @media (max-width: 1200px) {
-  .featured-scroll-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
+.featured-scroll-container {
+grid-template-columns: repeat(2, 1fr);
+gap: 2rem;
+}
 }
 
 @media (max-width: 768px) {
-  .featured-wrapper {
-    padding: 3rem 1.5rem 4rem 1.5rem;
-  }
+.featured-wrapper {
+padding: 3rem 1.5rem 4rem 1.5rem;
+}
 
-  .featured-title {
-    font-size: 1.6rem;
-    letter-spacing: 0.2em;
-  }
-  .featured-line {
-    flex: 0 0 40px;
-  }
+.featured-title {
+font-size: 1.6rem;
+letter-spacing: 0.2em;
+}
+.featured-line {
+flex: 0 0 40px;
+}
 
-  .featured-scroll-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 1.5rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 1.5rem;
-    scrollbar-width: none; /* Firefox */
-  }
+.featured-scroll-container {
+display: flex;
+overflow-x: auto;
+gap: 1.5rem;
+scroll-snap-type: x mandatory;
+-webkit-overflow-scrolling: touch;
+padding-bottom: 1.5rem;
+scrollbar-width: none; 
+}
 
-  .featured-scroll-container::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-  }
+.featured-scroll-container::-webkit-scrollbar {
+display: none; 
+}
 
-  .featured-card {
-    flex: 0 0 75%;
-    max-width: 320px;
-    scroll-snap-align: center;
-  }
+.featured-card {
+flex: 0 0 75%;
+max-width: 320px;
+scroll-snap-align: center;
+}
 
-  .featured-card:hover {
-    transform: translateY(-6px); /* मोबाइल पर हल्का इफेक्ट */
-  }
+.featured-card:hover {
+transform: translateY(-6px); 
+}
 
-  .featured-card-image-wrapper {
-    border-radius: 20px;
-  }
+.featured-card-image-wrapper {
+border-radius: 20px;
+}
 
-  .featured-card-label {
-    font-size: 1.2rem;
-  }
+.featured-card-label {
+font-size: 1.2rem;
+}
 
-  .featured-card-btn {
-    padding: 0.7rem 2rem;
-    font-size: 0.65rem;
-  }
+.featured-card-btn {
+padding: 0.7rem 2rem;
+font-size: 0.65rem;
+}
 }
 
 @media (max-width: 480px) {
-  .featured-wrapper {
-    padding: 2rem 0.5rem 3rem 0.5rem;
-  }
+.featured-wrapper {
+padding: 2rem 0.5rem 3rem 0.5rem;
+}
 
-  .featured-header {
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-  }
-  .featured-title {
-    font-size: 1.2rem;
-    letter-spacing: 0.15em;
-  }
-  .featured-line {
-    flex: 0 0 25px;
-  }
+.featured-header {
+gap: 1rem;
+margin-bottom: 2.5rem;
+}
+.featured-title {
+font-size: 1.2rem;
+letter-spacing: 0.15em;
+}
+.featured-line {
+flex: 0 0 25px;
+}
 
-  .featured-card {
-    flex: 0 0 85%;
-    max-width: 280px;
-  }
+.featured-card {
+flex: 0 0 85%;
+max-width: 280px;
+}
 }
