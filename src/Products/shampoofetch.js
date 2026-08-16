@@ -137,8 +137,7 @@ wishlistStatus[productlist.id] ? "fa-solid wishlist-active" : ""
 <img
 src={productlist.file_path}
 alt={productlist.name}
-loading="lazy"
-/>
+loading="lazy"/>
 </Link>
 
 <div className="padding_contain">
@@ -153,8 +152,8 @@ loading="lazy"
 <div className="review_Center">
 <span className="fa_Review">{productlist.review}</span>
 <span className="review-stars">
-{"★".repeat(Math.round(productlist.review || 0))}
-{"☆".repeat(5 - Math.round(productlist.review || 0))}
+{"".repeat(Math.round(productlist.review || 0))}
+{"".repeat(5 - Math.round(productlist.review || 0))}
 </span>
 </div>
 </div>
