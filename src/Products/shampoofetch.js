@@ -161,7 +161,6 @@ loading="lazy"/>
 className="add_crt"
 onClick={() => handleAddToCart(productlist)}
 >
-<span>ADD TO CART</span>
 </button>
 </div>
 </div>
