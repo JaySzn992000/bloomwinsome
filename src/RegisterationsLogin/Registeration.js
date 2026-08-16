@@ -65,7 +65,6 @@ return true;
 
 };
 
-
 const registerhanlder = (e) => {
 
 setformdata({ ...formdata, [e.target.name]: e.target.value });
@@ -118,7 +117,6 @@ const navigate = useNavigate();
 const Signin = () => {
 navigate("/Login");
 };
-
 
 return (
 
