@@ -9,6 +9,7 @@ import { addToCart } from "../action/action";
 import "./Pickle.css";
 
 const Pickle = ({ showFilters = true, limit, addToCart }) => {
+
 const [allProducts, setAllProducts] = useState([]);
 const [filteredProducts, setFilteredProducts] = useState([]);
 const location = useLocation();

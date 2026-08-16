@@ -9,25 +9,21 @@ const fs = require("fs");
 const cloudinary = require("cloudinary").v2;
 const app = express(); 
 
-
 require("dotenv").config();
 const pool = require("./config");
 
 app.use(cors({
 origin: [
-'https://winsome-bloom.vercel.app',
 'https://www.winsome-bloom.shop',
-'http://localhost:3000'
+'https://winsome-bloom.vercel.app'
 ],
 methods: ['GET', 'POST', 'PUT', 'DELETE'],
 credentials: true
 }));
 
-
 app.use(express.json());
 app.use(bodyParser.json());
 const PORT = 3001;
-
 
 const db = mysql.createConnection({
 host: "localhost",
@@ -985,55 +981,55 @@ res.status(500).json({ error: "Database query failed" });
 
 // from here
 
-app.get("/fetchProductslist", (req, res) => {
-const searchQuery = req.query.search || "";
+// app.get("/fetchProductslist", (req, res) => {
+// const searchQuery = req.query.search || "";
 
-const keywords = searchQuery.toLowerCase().split(/\s+/);
-const conditions = keywords
-.map((keyword) => `LOWER(name) LIKE ?`)
-.join(" AND ");
-const advancedSearchQuery = `
-SELECT *
-FROM imgproduct
-WHERE ${conditions}
-`;
-const advancedSearchValues = keywords.map((keyword) => `%${keyword}%`);
+// const keywords = searchQuery.toLowerCase().split(/\s+/);
+// const conditions = keywords
+// .map((keyword) => `LOWER(name) LIKE ?`)
+// .join(" AND ");
+// const advancedSearchQuery = `
+// SELECT *
+// FROM imgproduct
+// WHERE ${conditions}
+// `;
+// const advancedSearchValues = keywords.map((keyword) => `%${keyword}%`);
 
-db.query(
-advancedSearchQuery,
-advancedSearchValues,
-(err, advancedResults) => {
-if (err) {
-console.error("Error fetching data:", err.stack);
-return res.status(500).json({ error: "Database query failed" });
-}
+// db.query(
+// advancedSearchQuery,
+// advancedSearchValues,
+// (err, advancedResults) => {
+// if (err) {
+// console.error("Error fetching data:", err.stack);
+// return res.status(500).json({ error: "Database query failed" });
+// }
 
-if (advancedResults.length > 0) {
-return res.json(advancedResults);
-}
+// if (advancedResults.length > 0) {
+// return res.json(advancedResults);
+// }
 
-// If no advanced results,
-// check exact match
+// // If no advanced results,
+// // check exact match
 
-const exactMatchQuery = `
-SELECT *
-FROM imgproduct
-WHERE LOWER(img) = LOWER(?)
-`;
-const values = [searchQuery];
+// const exactMatchQuery = `
+// SELECT *
+// FROM imgproduct
+// WHERE LOWER(img) = LOWER(?)
+// `;
+// const values = [searchQuery];
 
-db.query(exactMatchQuery, values, (err, exactResults) => {
-if (err) {
-console.error("Error fetching data:", err.stack);
-return res.status(500).json({ error: "Database query failed" });
-}
+// db.query(exactMatchQuery, values, (err, exactResults) => {
+// if (err) {
+// console.error("Error fetching data:", err.stack);
+// return res.status(500).json({ error: "Database query failed" });
+// }
 
-res.json(exactResults);
-});
-}
-);
+// res.json(exactResults);
+// });
+// }
+// );
 
-});
+// });
 
 
 // fetchProductslist PostGreSQL 
