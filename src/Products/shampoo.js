@@ -10,6 +10,7 @@ return (
 <div>
 
 <Navbar />
+<Flexproducts type="shampoo" />
 <Header></Header>
 
 </div>
