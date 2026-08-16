@@ -210,11 +210,11 @@ Bath &amp; Body
 
 <div className="mega-column">
 <span className="mega-title">Bath Care</span>
-<a>Shower Gel</a>
-<a>Bubble Bath</a>
-<a>Epsom Bath Salt</a>
-<a>Body Scrub</a>
-<a>Luxury Soap</a>
+<a onClick={naviGatefacecream}>Face Wash</a>
+<a onClick={naviGateSunscreen}>Sunscreen</a>
+<a onClick={naviGateShampoo}>Shampoo</a>
+{/* <a>Body Scrub</a>
+<a>Luxury Soap</a> */}
 </div>
 
 {/* <div className="mega-column">
