@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import Navbar from "../headers_footer/navbar";
-import FAqQuestions from "./FAqQuestions";
-import Filters from "./Filters";
+import Filters from "../components/Filters";
 import { connect } from "react-redux";
 import { addToCart } from "../action/action";
-import axios from "axios";
-import Banner from "../Slider/Banner1.jpg"
-import "./ProductListmodule.css";
 import Header from "../headers_footer/header";
+import axios from "axios";
+import FAqQuestions from "../components/FAqQuestions";
 
-const Makeupfetch = ({ addToCart, filter}) => {
+const Makeupfetch = ({ addToCart, filter }) => {
 
 const [filteredProducts, setFilteredProducts] = useState([]);
 const [allProducts, setAllProducts] = useState([]);
@@ -20,15 +18,12 @@ const [cartCount, setCartCount] = useState(0);
 const [arrayStore, setArrayStore] = useState([]);
 const [products, setProducts] = useState([]);
 
-
 useEffect(() => {
-
 axios
-.get("https://omega-zg6z.onrender.com/fetchmakeup")
+.get("/fetchmakeup")
 .then((res) => setProducts(res.data))
 .catch((err) => console.error(err));
 }, []);
-
 
 const handleAddToCart = (product) => {
 if (!product) return;
@@ -47,219 +42,140 @@ alert("Product added to cart!");
 }
 };
 
-
 useEffect(() => {
 const storedWishlistStatus =
 JSON.parse(localStorage.getItem("wishlistStatus")) || {};
 setWishlistStatus(storedWishlistStatus);
-
-axios
-.get("https://omega-zg6z.onrender.com/fetchmakeup")
-.then((response) => {
-setArrayStore(response.data);
-setFilteredProducts(response.data);
-})
-
-.catch((error) => {
-console.error("Error fetching data:", error);
-});
-}, [] );
-
+const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+setWishlistCount(wishlist.length);
+}, []);
 
 const location = useLocation();
 const query = new URLSearchParams(location.search).get("search");
+
 useEffect(() => {
 if (query) {
 axios
 .get("https://omega-zg6z.onrender.com/fetchmakeup", {
 params: { search: query },
 })
-.then((response) => {
-setAllProducts(response.data);
-setFilteredProducts(response.data);
-})
-.catch((error) => {
-console.error("Error fetching products:", error);
-});
+.then((response) => setAllProducts(response.data))
+.catch((error) => console.error("Error fetching products:", error));
 } else {
 axios
 .get("https://omega-zg6z.onrender.com/fetchmakeup")
-.then((response) => {
-setAllProducts(response.data);
-setFilteredProducts(response.data);
-})
-.catch((error) => {
-console.error("Error fetching all products:", error);
-});
+.then((response) => setAllProducts(response.data))
+.catch((error) => console.error("Error fetching all products:", error));
 }
-}, [query] );
-
+}, [query]);
 
 useEffect(() => {
-
 if (!allProducts.length) return;
-
 let updatedProducts = [...allProducts];
-
 if (filter?.selectedNames?.length > 0) {
-
 updatedProducts = updatedProducts.filter((product) =>
-filter.selectedNames.some(
-(name) =>
+filter.selectedNames.some((name) =>
 product.img?.toLowerCase().includes(name.toLowerCase())
 )
 );
-
 }
-
 const min = filter?.minPrice ?? 0;
 const max = filter?.maxPrice ?? 100000;
-
 updatedProducts = updatedProducts.filter(
-(product) =>
-Number(product.price) >= min &&
-Number(product.price) <= max
+(product) => Number(product.price) >= min && Number(product.price) <= max
 );
-
 setFilteredProducts(updatedProducts);
-
 }, [filter, allProducts]);
 
 const sendToWishlist = (product) => {
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const productIndex = wishlist.findIndex((item) => item.id === product.id);
-
 if (productIndex === -1) {
 wishlist.push(product);
 } else {
 wishlist.splice(productIndex, 1);
 }
-
-
 localStorage.setItem("wishlist", JSON.stringify(wishlist));
 window.dispatchEvent(new Event("storage"));
-
-setWishlistStatus({
+const updatedStatus = {
 ...wishlistStatus,
 [product.id]: !wishlistStatus[product.id],
-} );
-
-
+};
+setWishlistStatus(updatedStatus);
 setWishlistCount(wishlist.length);
-
-const updatedWishlistStatus = {
-...wishlistStatus,
-[product.id]: !wishlistStatus[product.id],
-};
-localStorage.setItem(
-"wishlistStatus",
-JSON.stringify(updatedWishlistStatus)
-);
-setWishlistStatus(updatedWishlistStatus);
-};
-
-const handleFilterUpdate = (filtered) => {
-setFilteredProducts(filtered);
+localStorage.setItem("wishlistStatus", JSON.stringify(updatedStatus));
 };
 
 const slugify = (text) => {
 return text
 .toLowerCase()
-.replace(/[^a-z0-9]+/g, '-')   
-.replace(/(^-|-$)/g, '');      
+.replace(/[^a-z0-9]+/g, "-")
+.replace(/(^-|-$)/g, "");
 };
-
 
 return (
 
-<div>
-
-{/* <Navbar wishlistCount={wishlistCount} cartCount={cartCount} /> */}
-
-{/* <img className="ListBanner" src={Banner}></img> */}
-
-{/* <Filters allProducts={allProducts} onFilterUpdate={handleFilterUpdate} /> */}
+<div className="premium-wrapper">
 
 <div id="sticky_products_height">
-
 <div className="sticky-wrapper">
-
 <section>
 <div>
-
 <div className="flex_productlist">
 {filteredProducts.map((productlist) => (
 <div key={productlist.id} className="produclist_divContainer">
 
 <i
 onClick={() => sendToWishlist(productlist)}
-className={`fa fa-heart fa-heart_products ${
-wishlistStatus[productlist.id] ? "wishlist-active" : ""
+className={`fa-regular fa-heart fa-heart_products ${
+wishlistStatus[productlist.id] ? "fa-solid wishlist-active" : ""
 }`}
->
-{" "}
-</i>
+></i>
 
 <Link to={`/products/${slugify(productlist.name)}/${productlist.id}`}>
 <img
 src={productlist.file_path}
 alt={productlist.name}
-loading="lazy" />
+loading="lazy"
+/>
 </Link>
 
 <div className="padding_contain">
 <div className="flex_inr">
-
 <Link to={`/products/${slugify(productlist.name)}/${productlist.id}`}>
 <li>{productlist.name}</li>
 </Link>
-
 <div className="price_div">
-<li className="fa fa-inr"></li>
-<li className="fa_Price">{productlist.price}</li>
+<i className="fa fa-solid fa-indian-rupee-sign"></i>
+<span className="fa_Price">{productlist.price}</span>
 </div>
-
 <div className="review_Center">
-
-<img
-id="Review_Img"
-src="https://cdn-icons-png.flaticon.com/128/15853/15853959.png" />
-
-<li style={{ marginTop: ".5em", marginLeft: "-.2em" }}></li>
-<li className="fa_Review">{productlist.review}</li>
-
+<span className="fa_Review">{productlist.review}</span>
+<span className="review-stars">
+{"★".repeat(Math.round(productlist.review || 0))}
+{"☆".repeat(5 - Math.round(productlist.review || 0))}
+</span>
 </div>
-
 </div>
-
 <button
 className="add_crt"
 onClick={() => handleAddToCart(productlist)}
 >
 <span>ADD TO CART</span>
 </button>
-
 </div>
-
 </div>
 ))}
 </div>
-
 </div>
 </section>
-
+</div>
 </div>
 
-</div>
-
-<FAqQuestions></FAqQuestions>
-
-{/* <Header></Header> */}
+<FAqQuestions />
 
 </div>
-
 );
-
 };
 
 export default connect(null, { addToCart })(Makeupfetch);
