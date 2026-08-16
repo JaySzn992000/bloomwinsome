@@ -5,7 +5,7 @@ justify-content: center;
 align-items: center;
 margin: auto;
 width: 100%;
-margin-top: 2.7em;
+margin-top: 8.7em;
 margin-bottom: 3.7em;
 line-height: 2.8em;
 text-align: start;
@@ -94,7 +94,7 @@ width: 100%;
 flex-direction: column;
 width: 80vw;
 line-height: 2.6em;
-margin-top: 2.7em;
+margin-top: 5.7em;
 margin-bottom: 5em;
 }
 
@@ -126,6 +126,8 @@ margin-top: 1em;
 
 #logged_form button {
 margin-top: 0.8em;
+width: 175px;
+padding: 11px;
 }
 
 }
@@ -136,7 +138,7 @@ margin-top: 0.8em;
 #logged_form {
 width: 90%;
 margin: auto;
-margin-top: 3.5em;
+margin-top: 7.5em;
 margin-bottom: 5em;
 line-height: 2.7em;
 }
@@ -169,7 +171,7 @@ font-size: 0.85rem;
 #logged_form {
 width: 95%;
 margin: auto;
-margin-top: 3em;
+margin-top: 8.7em;
 margin-bottom: 4em;
 line-height: 2.8em;
 }
