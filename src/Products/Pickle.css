@@ -140,7 +140,6 @@ font-size: 0.9rem;
 font-weight: 500;
 line-height: 1.4;
 color: #1e1e1e;
-white-space: nowrap;
 overflow: hidden;
 text-overflow: ellipsis;
 transition: color 0.2s;

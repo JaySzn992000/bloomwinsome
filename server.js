@@ -16,6 +16,7 @@ app.use(cors({
 origin: [
 'https://www.winsome-bloom.shop',
 'https://winsome-bloom.vercel.app',
+'http://localhost:3000'
 ],
 methods: ['GET', 'POST', 'PUT', 'DELETE'],
 credentials: true
