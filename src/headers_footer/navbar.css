@@ -639,11 +639,11 @@ font-size: 0.82rem;
 }
 
 
-
 @media (max-width: 1120px) {
 
 .winsome-navbar {
 padding: 0 1rem;
+top: 2.5em;
 }
 
 .winsome-navbar .navbar-logo{
@@ -677,7 +677,7 @@ display: flex;
 }
 
 .winsome-navbar {
-top: 0;
+top: 2.5em;
 padding: 0 1.5rem;
 height: 65px;
 }
@@ -685,6 +685,16 @@ height: 65px;
 .winsome-navbar.scrolled {
 height: 64px;
 padding: 0 1.5rem;
+}
+
+.winsome-navbar.scrolled .navbar-bars img{
+filter: invert(0);
+}
+
+.navbar-bars img {
+width: 25px;
+height: 25px;
+filter: invert(1);
 }
 
 .navbar-logo {
@@ -697,7 +707,7 @@ height: 34px;
 @media (max-width: 600px) {
 
 .winsome-navbar {
-top: 0;
+top: 2.5em;
 height: 64px;
 background-color: #fff;
 }
@@ -763,9 +773,14 @@ background-color: #fff;
 right: -2px;
 }
 
+.winsome-navbar.scrolled .navbar-bars img{
+filter: invert(0);
+}
+
 .navbar-bars img {
-width: 22px;
-height: 22px;
+width: 25px;
+height: 25px;
+filter: invert(0);
 }
 
 .mobile-menu {

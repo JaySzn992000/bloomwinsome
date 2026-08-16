@@ -8,8 +8,7 @@ import { connect } from "react-redux";
 import { addToCart } from "../action/action";
 import "./Pickle.css";
 
-const Pickle = ({ showFilters = true, limit, addToCart}) => {
-
+const Pickle = ({ showFilters = true, limit, addToCart }) => {
 const [allProducts, setAllProducts] = useState([]);
 const [filteredProducts, setFilteredProducts] = useState([]);
 const location = useLocation();
@@ -83,7 +82,6 @@ localStorage.setItem("wishlistStatus", JSON.stringify(updatedWishlistStatus));
 setWishlistCount(wishlist.length);
 };
 
-
 const handleAddToCart = (product) => {
 if (!product) return;
 
@@ -95,103 +93,90 @@ const isProductInCart = cart.some(
 if (isProductInCart) {
 alert("This product is already in your cart.");
 } else {
-addToCart(product); 
+addToCart(product);
 
 const updatedCart = [...cart, product];
 localStorage.setItem("cart", JSON.stringify(updatedCart));
 
-setCartCount(updatedCart.length); 
+setCartCount(updatedCart.length);
 alert("Product added to cart!");
 }
-
 };
-
 
 useEffect(() => {
 const storedWishlistStatus =
 JSON.parse(localStorage.getItem("wishlistStatus")) || {};
-
 setWishlistStatus(storedWishlistStatus);
 
-const wishlist =
-JSON.parse(localStorage.getItem("wishlist")) || [];
-
+const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 setWishlistCount(wishlist.length);
-}, [] );
-
+}, []);
 
 return (
-
-<div>
-
+<div className="pickle-root">
 {showFilters && <Navbar />}
 {showFilters && (
 <Filters allProducts={allProducts} onFilterUpdate={handleFilterUpdate} />
 )}
 
-<div id="products_grid_wrapper">
+<div className="pickle-wrapper">
+<div className="pickle-container">
+<div className="pickle-inner">
 <section>
-<div className="product_grid_container">
-<div className="filter_spacing_div"></div>
-<div className="product_cards_wrapper">
-{limitedProducts.map((product, index) => (
-<div key={index} className="single_product_card">
+<div className="pickle-grid">
+{limitedProducts.map((product) => (
+<div key={product.id} className="pickle-card">
 
 <i
 onClick={() => sendToWishlist(product)}
-className={`fa fa-heart fa-heart_Pickle wishlist_icon ${
-wishlistStatus[product.id] ? "active_wishlist" : ""
+className={`fa-regular fa-heart pickle-heart ${
+wishlistStatus[product.id] ? "fa-solid pickle-heart-active" : ""
 }`}
-/>
+></i>
 
 <Link to={`/product/${product.id}`}>
 <img
 src={product.file_path}
 alt={product.name}
-className="product_image"
-/>
-</Link>
-
-<div className="product_info_container">
-<div className="info_inner">
-<Link to={`/product/${product.id}`}>
-<li className="product_title">{product.name}</li>
-</Link>
-
-<div className="price_section">
-<li className="fa fa-inr price_icon"></li>
-<li className="product_price">{product.price}</li>
-</div>
-
-<div className="review_section">
-<img
-src="https://cdn-icons-png.flaticon.com/128/15853/15853959.png"
 loading="lazy"
-alt="review"
-className="review_icon"
+className="pickle-img"
 />
-<li className="review_separator"></li>
-<li className="review_text">{product.review}</li>
-</div>
+</Link>
 
+<div className="pickle-content">
+<div className="pickle-details">
+<Link to={`/product/${product.id}`}>
+<li className="pickle-title">{product.name}</li>
+</Link>
+<div className="pickle-price">
+<i className="fa-solid fa-indian-rupee-sign pickle-rupee"></i>
+<span className="pickle-amount">{product.price}</span>
+</div>
+<div className="pickle-rating">
+<span className="pickle-stars">
+{"★".repeat(Math.round(product.review || 0))}
+{"☆".repeat(5 - Math.round(product.review || 0))}
+</span>
+<span className="pickle-review-count">{product.review}</span>
+</div>
+</div>
 <button
-className="add_crtPickle"
-onClick={() => handleAddToCart(product)} >
+className="pickle-cart-btn"
+onClick={() => handleAddToCart(product)}
+>
 <span>ADD TO CART</span>
 </button>
-
-</div>
 </div>
 </div>
 ))}
 </div>
-</div>
 </section>
 </div>
-
+</div>
+</div>
 </div>
 
 );
 };
 
-export default connect(null, { addToCart })(Pickle); 
+export default connect(null, { addToCart })(Pickle);

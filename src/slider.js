@@ -19,13 +19,11 @@ autoplaySpeed: 3000,
 arrows: true,
 };
 
-
 const navi = useNavigate()
 
 const naviColleciton = () => {
 navi('/collections')
 }
-
 
 return (
 

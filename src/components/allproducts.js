@@ -5,10 +5,11 @@ import FAqQuestions from "./FAqQuestions";
 import Filters from "./Filters";
 import { connect } from "react-redux";
 import { addToCart } from "../action/action";
-import axios from "axios";
 import Header from "../headers_footer/header";
+import axios from "axios";
+import "./ProductListmodule.css";
 
-const Allproducts = ({ addToCart, filter}) => {
+const Allproducts = ({ addToCart, filter }) => {
 
 const [filteredProducts, setFilteredProducts] = useState([]);
 const [allProducts, setAllProducts] = useState([]);
@@ -19,7 +20,6 @@ const [arrayStore, setArrayStore] = useState([]);
 const [products, setProducts] = useState([]);
 
 useEffect(() => {
-
 axios
 .get("/fetchProductslist")
 .then((res) => setProducts(res.data))
@@ -46,166 +46,92 @@ alert("Product added to cart!");
 useEffect(() => {
 const storedWishlistStatus =
 JSON.parse(localStorage.getItem("wishlistStatus")) || {};
-
 setWishlistStatus(storedWishlistStatus);
-
-const wishlist =
-JSON.parse(localStorage.getItem("wishlist")) || [];
-
+const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 setWishlistCount(wishlist.length);
 }, []);
-
-// useEffect(() => {
-// const storedWishlistStatus =
-// JSON.parse(localStorage.getItem("wishlistStatus")) || {};
-// setWishlistStatus(storedWishlistStatus);
-
-// axios
-// .get("https://omega-zg6z.onrender.com/fetchProductslist")
-// .then((response) => {
-// setArrayStore(response.data);
-// setFilteredProducts(response.data);
-// }) 
-
-// .catch((error) => {
-// console.error("Error fetching data:", error);
-// });
-// }, [] );
 
 const location = useLocation();
 const query = new URLSearchParams(location.search).get("search");
 
 useEffect(() => {
-
 if (query) {
-
 axios
 .get("https://omega-zg6z.onrender.com/fetchProductslist", {
 params: { search: query },
 })
-.then((response) => {
-
-setAllProducts(response.data);
-
-})
-.catch((error) => {
-console.error("Error fetching products:", error);
-});
-
+.then((response) => setAllProducts(response.data))
+.catch((error) => console.error("Error fetching products:", error));
 } else {
-
 axios
 .get("https://omega-zg6z.onrender.com/fetchProductslist")
-.then((response) => {
-
-setAllProducts(response.data);
-
-})
-.catch((error) => {
-console.error("Error fetching all products:", error);
-});
-
+.then((response) => setAllProducts(response.data))
+.catch((error) => console.error("Error fetching all products:", error));
 }
-
-}, [query] );
+}, [query]);
 
 useEffect(() => {
-
 if (!allProducts.length) return;
-
 let updatedProducts = [...allProducts];
-
 if (filter?.selectedNames?.length > 0) {
-
 updatedProducts = updatedProducts.filter((product) =>
-filter.selectedNames.some(
-(name) =>
+filter.selectedNames.some((name) =>
 product.img?.toLowerCase().includes(name.toLowerCase())
 )
 );
-
 }
-
 const min = filter?.minPrice ?? 0;
 const max = filter?.maxPrice ?? 100000;
-
 updatedProducts = updatedProducts.filter(
-(product) =>
-Number(product.price) >= min &&
-Number(product.price) <= max
+(product) => Number(product.price) >= min && Number(product.price) <= max
 );
-
 setFilteredProducts(updatedProducts);
-
 }, [filter, allProducts]);
 
 const sendToWishlist = (product) => {
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const productIndex = wishlist.findIndex((item) => item.id === product.id);
-
 if (productIndex === -1) {
 wishlist.push(product);
 } else {
 wishlist.splice(productIndex, 1);
 }
-
 localStorage.setItem("wishlist", JSON.stringify(wishlist));
 window.dispatchEvent(new Event("storage"));
-
-setWishlistStatus({
+const updatedStatus = {
 ...wishlistStatus,
 [product.id]: !wishlistStatus[product.id],
-} );
-
+};
+setWishlistStatus(updatedStatus);
 setWishlistCount(wishlist.length);
-
-const updatedWishlistStatus = {
-...wishlistStatus,
-[product.id]: !wishlistStatus[product.id],
+localStorage.setItem("wishlistStatus", JSON.stringify(updatedStatus));
 };
-localStorage.setItem(
-"wishlistStatus",
-JSON.stringify(updatedWishlistStatus)
-);
-setWishlistStatus(updatedWishlistStatus);
-};
-
 
 const slugify = (text) => {
 return text
 .toLowerCase()
-.replace(/[^a-z0-9]+/g, '-')   
-.replace(/(^-|-$)/g, '');      
+.replace(/[^a-z0-9]+/g, "-")
+.replace(/(^-|-$)/g, "");
 };
-
 
 return (
 
-<div>
-
-{/* <Navbar wishlistCount={wishlistCount} cartCount={cartCount} /> */}
-
-{/* <Filters allProducts={allProducts} onFilterUpdate={handleFilterUpdate} /> */}
+<div className="premium-wrapper">
 
 <div id="sticky_products_height">
-
 <div className="sticky-wrapper">
-
 <section>
 <div>
-
 <div className="flex_productlist">
 {filteredProducts.map((productlist) => (
 <div key={productlist.id} className="produclist_divContainer">
 
 <i
 onClick={() => sendToWishlist(productlist)}
-className={`fa fa-heart fa-heart_products ${
-wishlistStatus[productlist.id] ? "wishlist-active" : ""
+className={`fa-regular fa-heart fa-heart_products ${
+wishlistStatus[productlist.id] ? "fa-solid wishlist-active" : ""
 }`}
->
-{" "}
-</i>
+></i>
 
 <Link to={`/products/${slugify(productlist.name)}/${productlist.id}`}>
 <img
@@ -217,58 +143,40 @@ loading="lazy"
 
 <div className="padding_contain">
 <div className="flex_inr">
-
 <Link to={`/products/${slugify(productlist.name)}/${productlist.id}`}>
 <li>{productlist.name}</li>
 </Link>
-
 <div className="price_div">
-<li className="fa fa-inr"></li>
-<li className="fa_Price">{productlist.price}
-</li>
+<i className="fa fa-solid fa-indian-rupee-sign"></i>
+<span className="fa_Price">{productlist.price}</span>
 </div>
-
 <div className="review_Center">
-
-<img
-id="Review_Img"
-src="https://cdn-icons-png.flaticon.com/128/15853/15853959.png"
-/>
-
-<li className="fa_Review">{productlist.review}</li>
-
+<span className="fa_Review">{productlist.review}</span>
+<span className="review-stars">
+{"★".repeat(Math.round(productlist.review || 0))}
+{"☆".repeat(5 - Math.round(productlist.review || 0))}
+</span>
 </div>
-
 </div>
-
 <button
 className="add_crt"
 onClick={() => handleAddToCart(productlist)}
 >
 <span>ADD TO CART</span>
 </button>
-
 </div>
-
 </div>
 ))}
 </div>
-
 </div>
 </section>
-
+</div>
 </div>
 
-</div>
-
-<FAqQuestions></FAqQuestions>
-
-{/* <Header></Header> */}
+<FAqQuestions />
 
 </div>
-
 );
-
 };
 
 export default connect(null, { addToCart })(Allproducts);

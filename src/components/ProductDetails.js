@@ -10,9 +10,8 @@ import "./ProductDetails.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-medium-image-zoom/dist/styles.css";
-import winsomeproductdetails from "../Slider/winsomeproductdetails.png"
+import winsomeproductdetails from "../Slider/winsomeproductdetails.png";
 import axios from "axios";
-
 
 const ProductDetails = ({ addToCart, cart }) => {
 
@@ -21,16 +20,13 @@ const navigate = useNavigate();
 const [arrayStore, setArrayStore] = useState(null);
 const [cartCount, setCartCount] = useState(cart.length);
 const [mainImage, setMainImage] = useState("");
-const [message, setMessage] = useState("");
 const [selectedThumb, setSelectedThumb] = useState(null);
-
 
 useEffect(() => {
 fetch(`https://omega-zg6z.onrender.com/products/${id}`)
-.then(res => res.json())
-.then(data => {
-});
-}, [id] );
+.then((res) => res.json())
+.then((data) => {});
+}, [id]);
 
 useEffect(() => {
 const fetchProduct = async () => {
@@ -41,36 +37,31 @@ const response = await axios.get(
 const data = response.data;
 const product = data.find((product) => product.id === parseInt(id));
 setArrayStore(product);
-setMainImage(product.file_path);
+setMainImage(product?.file_path || "");
 } catch (error) {
 console.log("Error fetching product:", error);
 }
 };
-
 fetchProduct();
-}, [id] );
+}, [id]);
 
 const handleAddToCart = () => {
 if (arrayStore) {
-const isProductInCart = cart.some(
-(item) => item.id === arrayStore.id 
-);
-
+const isProductInCart = cart.some((item) => item.id === arrayStore.id);
 if (isProductInCart) {
-alert("This product already in your cart.");
+alert("This product is already in your cart.");
 } else {
 const productToAdd = {
 ...arrayStore,
 price: arrayStore.price,
 originalPrice: arrayStore.price,
 };
-
 addToCart(productToAdd);
 setCartCount(cartCount + 1);
 localStorage.setItem(`cart-added-${id}`, JSON.stringify(true));
 alert("Product added to cart!");
 }
-} 
+}
 };
 
 const handleGoToCart = () => {
@@ -82,7 +73,7 @@ setMainImage(imagePath);
 };
 
 if (!arrayStore) {
-return <div>Product not found</div>;
+return <div className="loading-state">Loading…</div>;
 }
 
 const sliderSettings = {
@@ -92,172 +83,163 @@ speed: 500,
 slidesToShow: 1,
 slidesToScroll: 1,
 arrows: false,
+autoplay: true,
+autoplaySpeed: 4000,
 };
 
+const productImages = [
+arrayStore.file_path,
+arrayStore.file_path1,
+arrayStore.file_path2,
+arrayStore.file_path3,
+].filter(Boolean);
 
 return (
 
-<div>
+<div className="product-details-page">
 
 <Navbar cartCount={cartCount} />
 
-<div className="product-details">
+<div className="product-details-container">
 
-<div className="mobile-slider">
-
-<Slider {...sliderSettings}>
-<div>
-<img
-className="product_img mobile-slider-img"
-src={arrayStore.file_path}
-alt={`${arrayStore.name} - Image 1`}
-loading="lazy" />
+<div className="breadcrumb">
+Home <span>›</span> Skincare <span>›</span> Serums <span>›</span>
+<span className="current">{arrayStore.name}</span>
 </div>
 
-<div>
-<img
-className="product_img mobile-slider-img"
-src={arrayStore.file_path1}
-alt={`${arrayStore.name} - Image 2`}
-loading="lazy" />
-</div>
+<div className="product-details-grid">
 
-<div>
-<img
-className="product_img mobile-slider-img"
-src={arrayStore.file_path2}
-alt={`${arrayStore.name} - Image 3`}
-loading="lazy" />
-</div>
+<div className="product-gallery">
 
-<div>
-<img
-className="product_img mobile-slider-img"
-src={arrayStore.file_path3}
-alt={`${arrayStore.name} - Image 4`}
-loading="lazy"/>
-</div>
-
-</Slider>
-
-</div>
-
-<div className="thumbnails-container">
-
-<img
-className={`thumbnail ${
-selectedThumb === arrayStore.file_path1 ? "thumb-active" : ""
-}`}
-src={arrayStore.file_path1}
-loading="lazy"
-onClick={() => {
-handleThumbnailClick(arrayStore.file_path1);
-setSelectedThumb(arrayStore.file_path1);
-}} />
-
-<img
-className={`thumbnail ${
-selectedThumb === arrayStore.file_path2 ? "thumb-active" : ""
-}`}
-src={arrayStore.file_path2}
-loading="lazy"
-onClick={() => {
-handleThumbnailClick(arrayStore.file_path2);
-setSelectedThumb(arrayStore.file_path2);
-}} />
-
-<img
-className={`thumbnail ${
-selectedThumb === arrayStore.file_path3 ? "thumb-active" : ""
-}`}
-src={arrayStore.file_path3}
-loading="lazy"
-onClick={() => {
-handleThumbnailClick(arrayStore.file_path3);
-setSelectedThumb(arrayStore.file_path3);
-}} />
-
-</div>
-
-<div className="product-img-container">
-
+<div className="gallery-main">
 <Zoom>
 <img
-className="product_img"
-src={mainImage}
+className="main-image"
+src={mainImage || arrayStore.file_path}
 alt={arrayStore.name}
-loading="lazy"
 />
 </Zoom>
+<div className="zoom-hint">
+<i className="fas fa-search-plus"></i>
+</div>
 </div>
 
-<div className="second_div">
+<div className="gallery-thumbs">
+{productImages.map((img, idx) => (
+<div
+key={idx}
+className={`thumb ${mainImage === img ? "active" : ""}`}
+onClick={() => {
+handleThumbnailClick(img);
+setSelectedThumb(img);
+}}
+>
+<img src={img} alt={`Thumbnail ${idx + 1}`} />
+</div>
+))}
+</div>
+</div>
 
-<section>
-<h1>{arrayStore.name}</h1>
+<div className="mobile-slider">
+<Slider {...sliderSettings}>
+{productImages.map((img, idx) => (
+<div key={idx}>
+<img
+className="mobile-slide-img"
+src={img}
+alt={`Slide ${idx + 1}`}
+/>
+</div>
+))}
+</Slider>
+</div>
 
-<h2 className="Scnd_hTg">
-<span>
-{ } ₹{ }
-{arrayStore.price}
+<div className="product-info">
+<div className="product-category">✦ Brightening Serum</div>
+<h1 className="product-name">{arrayStore.name}</h1>
+<div className="product-subtitle">
+with Hyaluronic Acid + Ferulic Acid
+</div>
+
+<div className="product-rating">
+<div className="stars">
+<i className="fas fa-star"></i>
+<i className="fas fa-star"></i>
+<i className="fas fa-star"></i>
+<i className="fas fa-star"></i>
+<i className="fas fa-star-half-alt"></i>
+</div>
+<span className="review-count">
+{arrayStore.review || "4.8"} (1,247 reviews)
 </span>
-</h2>
-
-</section>
-
-<div className="review_Cntnr">
-<img
-id="Review_Image"
-src="https://cdn-icons-png.flaticon.com/128/15853/15853959.png"/>
-<li className="fa_Review">{arrayStore.review}</li>
 </div>
 
-<div className="flex_btnADD_CART">
-<button onClick={handleAddToCart} id="btn" className="add_crt">
-<img
-className="iconDetails"
-src="https://www.flavoursguru.com/catalog/view/theme/default/image/cart-icon.svg"
-alt=""
-loading="lazy"
-></img>
-<span>ADD TO CART</span>
-</button>
-
-<button className="go-toCart" id="btn" onClick={handleGoToCart}>
-<img
-className="iconDetails"
-src="https://www.flavoursguru.com/catalog/view/theme/default/image/order-now.svg"
-loading="lazy"
-alt=""
-></img>
-GO TO CART
-</button>
+<div className="product-price">
+<span className="current">₹{arrayStore.price}</span>
+<span className="original">₹{Math.round(arrayStore.price * 1.4)}</span>
+<span className="badge-save">SAVE 38%</span>
 </div>
 
-<br/>
-
-<img className="flex_shippedImg" src={winsomeproductdetails}></img>
-
-</div>
-
-</div>
-
-<div className="descproduct">
-
-<h2>Description</h2>
-
-<p className="prdctDetails">
-
-<br></br>
-
-{arrayStore.description}
-
+<p className="product-description">
+{arrayStore.description ||
+"A potent, dermatologist-tested serum that visibly brightens, evens skin tone, and boosts radiance."}
 </p>
 
+<div className="product-features">
+<span className="feature">
+<i className="fas fa-check-circle"></i> 15% Vitamin C
+</span>
+<span className="feature">
+<i className="fas fa-check-circle"></i> Hyaluronic Acid
+</span>
+<span className="feature">
+<i className="fas fa-check-circle"></i> Ferulic Acid
+</span>
+<span className="feature">
+<i className="fas fa-check-circle"></i> Cruelty‑Free
+</span>
+<span className="feature">
+{/* <i className="fas fa-check-circle"></i> 30 ml */}
+</span>
+</div>
+
+<div className="product-actions">
+<button className="btn-primary" onClick={handleAddToCart}>
+<i className="fas fa-shopping-bag"></i> Add to Cart
+</button>
+<button className="btn-secondary" onClick={handleGoToCart}>
+<i className="fas fa-arrow-right"></i> Go to Cart
+</button>
+</div>
+
+<div className="product-trust">
+<span className="trust-item">
+<i className="fas fa-truck"></i> Free shipping
+</span>
+<span className="trust-item">
+<i className="fas fa-undo-alt"></i> 30‑day return
+</span>
+<span className="trust-item">
+<i className="fas fa-shield-alt"></i> Authentic guarantee
+</span>
+</div>
+</div>
+</div>
+
+<div className="product-description-full">
+<div className="inner">
+<h2>
+<i className="fas fa-feather-alt"></i> Description
+</h2>
+<p>
+{arrayStore.description ||
+"Our Radiance Boost Vitamin C Serum is a luxurious, high‑performance formulation designed to revive dull, tired skin…"}
+</p>
+</div>
+</div>
 </div>
 
 <Header />
-
 </div>
 
 );
