@@ -150,7 +150,7 @@ className="pickle-img"
 <li className="pickle-title">{product.name}</li>
 </Link>
 <div className="pickle-price">
-<i className="fa-solid fa-indian-rupee-sign pickle-rupee"></i>
+<i className="fa fa-solid fa-indian-rupee-sign pickle-rupee"></i>
 <span className="pickle-amount">{product.price}</span>
 </div>
 <div className="pickle-rating">

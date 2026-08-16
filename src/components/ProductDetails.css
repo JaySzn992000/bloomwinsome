@@ -429,6 +429,7 @@ padding: 110px 16px 40px;
 .breadcrumb {
 font-size: 0.7rem;
 margin-bottom: 20px;
+flex-wrap: wrap;
 }
 
 .product-details-grid {
