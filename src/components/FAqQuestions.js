@@ -29,6 +29,7 @@ setOpenIndex(openIndex === index ? null : index);
 };
 
 return (
+
 <div className="faq-container">
 <label>NEED HELP ?</label>
 <h2>Frequently Asked Questions</h2>

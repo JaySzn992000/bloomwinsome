@@ -247,6 +247,11 @@ padding: 1.2em;
 margin-left: 0%;
 }
 
+.pickle-container {
+width: 85%;
+padding: 1rem;
+}
+
 }
 
 @media (max-width: 1200px) {
