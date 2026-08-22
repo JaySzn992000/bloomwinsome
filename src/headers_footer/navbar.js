@@ -292,7 +292,7 @@ Skin Care
 {loggedInUser ? (
 <div className="icon-wrapper auth-group">
 <img src={UserIcon} className="nav-icon" onClick={naviRegist} alt="profile" />
-<button className="auth-link" onClick={logout}>Logout</button>
+{/* <button className="auth-link" onClick={logout}>Logout</button> */}
 </div>
 ) : (
 <img src={UserIcon} className="nav-icon" onClick={naviRegist} alt="login" />
@@ -304,12 +304,11 @@ Skin Care
 </div>
 
 <span className="nav-divider" />
-
-{loggedInUser && (
+{/* {loggedInUser && (
 <button className="auth-link" onClick={orderhistory} style={{ fontSize: "0.6rem" }}>
 Orders
 </button>
-)}
+)} */}
 </div>
 </nav>
 
